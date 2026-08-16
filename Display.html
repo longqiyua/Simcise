@@ -259,6 +259,25 @@ body::-webkit-scrollbar { display: none; }
 .light-zone { border-radius: 14px; padding: 24px; border: 1px solid var(--border); position: relative; overflow: hidden; }
 .light-zone::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.5) 0%, transparent 60%); pointer-events: none; }
 [data-theme="dark"] .light-zone::before { background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.03) 0%, transparent 60%); }
+
+/* Binary Star Spinner — two orbiting circles, overlap = accent light */
+.binary-spinner { width: 48px; height: 48px; position: relative; }
+.binary-spinner .orbit { position: absolute; inset: 0; animation: binaryRevolve 2.8s var(--ease-main) infinite; }
+.binary-spinner .orbit:nth-child(2) { animation-delay: -1.4s; }
+.binary-spinner .star {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-200);
+  top: 50%; left: 50%; margin: -10px 0 0 -10px;
+  mix-blend-mode: multiply;
+}
+[data-theme="dark"] .binary-spinner .star {
+  background: var(--accent-300);
+  mix-blend-mode: screen;
+}
+@keyframes binaryRevolve {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 </head>
 <body>
@@ -655,6 +674,36 @@ body::-webkit-scrollbar { display: none; }
     </div>
     <div style="margin-top:16px" class="card" style="padding:16px">
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--text)">Light Formula:</b> Every surface = base color + radial-gradient highlight (top-left 30%/20%) + 1px border (lighter top, darker bottom) + inset shadow (white highlight top, 0.5~0.7 opacity). Dark mode: reduce highlight to 0.03~0.05 opacity, increase shadow depth.</div>
+    </div>
+  </div>
+
+  <!-- E6 · Binary Star Spinner -->
+  <div class="section">
+    <div class="section-title"><span class="num e-num">E6</span> Binary Star Spinner</div>
+    <div class="section-desc">Two stars orbiting a shared center · Overlap blends into accent light · mix-blend-mode</div>
+    <div class="section-rule"><b>Rule:</b> NOT a single ball on a track. Two circles on the same orbit, 180° apart. They revolve around the shared center. Where they cross, colors blend naturally — multiply (light) or screen (dark) creates the accent-light overlap. Use for page-level loading.</div>
+    <div class="card" style="padding:24px">
+      <div class="flex-row" style="gap:40px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div class="binary-spinner"><div class="orbit"><div class="star"></div></div><div class="orbit"><div class="star"></div></div></div>
+          <span style="font-size:11px;color:var(--text-muted)">Default</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div class="binary-spinner" style="width:36px;height:36px"><div class="orbit"><div class="star" style="width:16px;height:16px;margin:-8px 0 0 -8px"></div></div><div class="orbit"><div class="star" style="width:16px;height:16px;margin:-8px 0 0 -8px"></div></div></div>
+          <span style="font-size:11px;color:var(--text-muted)">Small</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div class="binary-spinner" style="width:64px;height:64px"><div class="orbit"><div class="star" style="width:28px;height:28px;margin:-14px 0 0 -14px"></div></div><div class="orbit"><div class="star" style="width:28px;height:28px;margin:-14px 0 0 -14px"></div></div></div>
+          <span style="font-size:11px;color:var(--text-muted)">Large</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div class="binary-spinner"><div class="orbit"><div class="star" style="background:var(--danger);opacity:0.5"></div></div><div class="orbit"><div class="star" style="background:var(--danger);opacity:0.5"></div></div></div>
+          <span style="font-size:11px;color:var(--text-muted)">Danger</span>
+        </div>
+      </div>
+      <div style="margin-top:24px;padding:14px 18px;border-radius:10px;background:var(--bg-secondary);border:1px solid var(--border);font-size:12px;color:var(--text-secondary);line-height:1.7">
+        <b style="color:var(--text)">How it works:</b> Two circles on the same orbit, 180° apart (via animation-delay: -1.4s). They revolve around the shared center. At the crossing point, <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-tertiary);padding:1px 5px;border-radius:4px">mix-blend-mode: multiply</code> blends the two accent-200 circles into a deeper accent tone — the overlap IS the accent light.
+      </div>
     </div>
   </div>
 

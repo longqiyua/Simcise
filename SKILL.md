@@ -306,6 +306,31 @@ Simcise 是一套产品级 UI 设计系统。分为**基础层**和**修饰层**
 .glass-full   { backdrop-filter: blur(48px); }   /* 沉浸式背景 */
 ```
 
+### E9 · 双星加载器 Binary Star Spinner
+
+> 两个圆球互绕共享中心，重叠部分自然混合出强调色浅色系。
+
+**何时用**：页面级加载、异步操作等待（替代 E7 轨道小球）。
+**何时不用**：按钮内 loading（用简单 dots）。
+
+```css
+.binary-spinner { width: 48px; height: 48px; position: relative; }
+.binary-spinner .orbit { position: absolute; inset: 0; animation: binaryRevolve 2.8s var(--ease-main) infinite; }
+.binary-spinner .orbit:nth-child(2) { animation-delay: -1.4s; }
+.binary-spinner .star {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent-200);
+  top: 50%; left: 50%; margin: -10px 0 0 -10px;
+  mix-blend-mode: multiply;  /* dark mode → screen */
+}
+@keyframes binaryRevolve {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* 原理：两个圆球在同一轨道 180° 对立，绕共享中心旋转。
+   交叉点 mix-blend-mode 自然混合 → 重叠色 = 强调色浅色 */
+```
+
 ---
 
 ## Vibe Coding Checklist
