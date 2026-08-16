@@ -24,8 +24,9 @@
   --accent-soft: rgba(26,107,102,0.08); --accent-glow: rgba(26,107,102,0.25);
   --danger: #D94F4F; --danger-soft: rgba(217,79,79,0.08);
   --success: #059669; --warning: #F59E0B; --info: #3B82F6;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08); --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+  --shadow-air: 0 1px 3px rgba(26,26,26,0.04), 0 6px 20px -8px rgba(26,26,26,0.05);   /* 空气感：轻径向，仅实体感 */
+  --shadow-lift: 0 2px 6px rgba(26,26,26,0.05), 0 14px 36px -14px rgba(26,26,26,0.10); /* hover 浮起：呼吸感 */
+  --inverse: #1A1A1A; --inverse-text: #FAFAF8;  /* 主题反色：关闭按钮专用，非红色 */
   --ease-main: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-enter: cubic-bezier(0.22, 0.95, 0.35, 1);
   --ease-bounce: cubic-bezier(0.22, 1.2, 0.36, 1);
@@ -44,8 +45,9 @@
   --accent: #2A8D84; --accent-600: #349E96; --accent-700: #5ABFB6;
   --accent-hover: #349E96;
   --accent-soft: rgba(42,141,132,0.12); --accent-glow: rgba(42,141,132,0.30);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.30); --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.45);
+  --shadow-air: 0 1px 3px rgba(0,0,0,0.22), 0 6px 20px -8px rgba(0,0,0,0.28);
+  --shadow-lift: 0 2px 6px rgba(0,0,0,0.26), 0 14px 36px -14px rgba(0,0,0,0.42);
+  --inverse: #DDE3EB; --inverse-text: #16171A;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,6 +70,13 @@ body::-webkit-scrollbar { display: none; }
 .theme-btn:hover { border-color: var(--border-strong); color: var(--text); }
 .theme-btn.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 0 16px var(--accent-glow); }
 
+/* Window Controls — hover 才显示，移开隐藏 · 关闭用主题反色非红色 · 按钮要够大 */
+.win-controls { display: flex; gap: 6px; opacity: 0; transform: translateY(-2px); transition: opacity 250ms var(--ease-main), transform 250ms var(--ease-main); }
+.topbar:hover .win-controls, .win-controls:focus-within { opacity: 1; transform: translateY(0); }
+.win-btn { width: 36px; height: 36px; border-radius: 10px; border: none; background: transparent; color: var(--text-muted); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--font-latin); transition: all 150ms var(--ease-main); }
+.win-btn:hover { background: var(--bg-tertiary); color: var(--text); }
+.win-btn.close:hover { background: var(--inverse); color: var(--inverse-text); }
+
 /* Section */
 .section { margin-bottom: 96px; }
 .section-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; letter-spacing: -0.3px; }
@@ -85,7 +94,7 @@ body::-webkit-scrollbar { display: none; }
 
 /* Color Card — always bordered */
 .color-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); transition: all 200ms var(--ease-main); }
-.color-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.color-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
 .color-swatch { height: 56px; display: flex; align-items: flex-end; padding: 6px 10px; border-bottom: 1px solid var(--border); }
 .color-swatch span { font-family: var(--font-mono); font-size: 10px; color: rgba(0,0,0,0.5); text-shadow: 0 1px 2px rgba(255,255,255,0.5); }
 .color-info { padding: 8px 10px; }
@@ -141,7 +150,7 @@ body::-webkit-scrollbar { display: none; }
 
 /* Cards */
 .card { border-radius: 16px; border: 1px solid var(--border); background: var(--surface); padding: 24px; transition: all 200ms var(--ease-main); }
-.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent-200); }
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: var(--accent-200); }
 .card-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .card-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
 .card-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 8px; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-100); margin-top: 10px; }
@@ -156,7 +165,7 @@ body::-webkit-scrollbar { display: none; }
 
 /* Toast */
 .toast-container { position: fixed; top: 20px; right: 20px; z-index: 3000; display: flex; flex-direction: column; gap: 8px; }
-.toast { padding: 10px 16px; border-radius: 10px; font-size: 12px; background: var(--surface); box-shadow: var(--shadow-md); border: 1px solid var(--border); border-left: 3px solid var(--info); display: flex; align-items: center; gap: 8px; animation: slideInDown 300ms var(--ease-enter); max-width: 360px; }
+.toast { padding: 10px 16px; border-radius: 10px; font-size: 12px; background: var(--surface); box-shadow: var(--shadow-lift); border: 1px solid var(--border); border-left: 3px solid var(--info); display: flex; align-items: center; gap: 8px; animation: slideInDown 300ms var(--ease-enter); max-width: 360px; }
 .toast.success { border-left-color: var(--success); }
 .toast.error { border-left-color: var(--danger); }
 .toast.warning { border-left-color: var(--warning); }
@@ -207,7 +216,7 @@ body::-webkit-scrollbar { display: none; }
 /* Philosophy Banner */
 .philo-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 72px; }
 .philo-item { padding: 20px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); font-size: 12px; color: var(--text-secondary); line-height: 1.6; transition: all 300ms var(--ease-main); }
-.philo-item:hover { border-color: var(--accent-200); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.philo-item:hover { border-color: var(--accent-200); transform: translateY(-2px); box-shadow: var(--shadow-air); }
 .philo-item b { display: block; font-size: 13px; color: var(--accent); margin-bottom: 4px; font-family: var(--font-display); }
 
 /* Breathing */
@@ -286,13 +295,21 @@ body::-webkit-scrollbar { display: none; }
   <div class="topbar">
     <div>
       <h1><span>Simcise</span> Design System</h1>
-      <div class="topbar-meta">v3.2 · Simplex × Concise · 2026.08.16</div>
+      <div class="topbar-meta">v3.3 · Simplex × Concise · 2026.08.16</div>
     </div>
-    <div class="theme-switcher">
-      <button class="theme-btn active" data-set-theme="light">Light</button>
-      <button class="theme-btn" data-set-theme="dark">Dark</button>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="theme-switcher">
+        <button class="theme-btn active" data-set-theme="light">Light</button>
+        <button class="theme-btn" data-set-theme="dark">Dark</button>
+      </div>
+      <div class="win-controls" title="hover 才出现，移开即隐 · 关闭用主题反色">
+        <button class="win-btn" title="最小化">—</button>
+        <button class="win-btn" title="最大化">▢</button>
+        <button class="win-btn close" title="关闭（主题反色，非红色）">✕</button>
+      </div>
     </div>
   </div>
+  <div style="margin-top:-52px;margin-bottom:48px;font-size:11px;color:var(--text-faint)">↑ 把鼠标移到此行上方：窗口控制按钮 hover 浮现，移开即隐 · 关闭键悬停变主题反色（红色仅留给清空数据等破坏性操作）</div>
 
   <!-- Philosophy Banner: Simplex × Concise -->
   <div class="philo-banner">
@@ -565,15 +582,17 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- 15 · Shadow -->
+  <!-- 15 · Shadow — air & lift only -->
   <div class="section">
-    <div class="section-title"><span class="num">15</span> Shadows</div>
-    <div class="section-desc">For hierarchy, not decoration · Max 2 layers · Blur gap ≥ 2×</div>
+    <div class="section-title"><span class="num">15</span> Shadows · 轻径向</div>
+    <div class="section-desc">阴影仅用于增强实体感、空气感、呼吸感 · 装饰性阴影 = 视觉噪音，禁止</div>
+    <div class="section-rule"><b>Rule:</b> 只有 2 级阴影：Air（空气感，静态实体）与 Lift（呼吸感，hover 浮起）。大模糊半径 + 负 spread（-8px/-14px）让阴影径向弥散、边缘消失。禁止用阴影做层级堆叠装饰——层级靠间距和背景色表达。</div>
     <div class="grid-2">
-      <div class="shadow-box" style="box-shadow:var(--shadow-sm)">SM · 0 2px 8px 0.08</div>
-      <div class="shadow-box" style="box-shadow:var(--shadow-md)">MD · 0 4px 16px 0.12</div>
-      <div class="shadow-box" style="box-shadow:var(--shadow-lg)">LG · 0 8px 32px 0.18</div>
-      <div class="shadow-box" style="box-shadow:0 24px 64px rgba(0,0,0,0.22)">XL · 0 24px 64px 0.22</div>
+      <div class="shadow-box" style="box-shadow:var(--shadow-air)">Air · 实体感 · 0 1px 3px 0.04 + 0 6px 20px -8px 0.05</div>
+      <div class="shadow-box" style="box-shadow:var(--shadow-lift)">Lift · 呼吸感 · 0 2px 6px 0.05 + 0 14px 36px -14px 0.10</div>
+    </div>
+    <div style="margin-top:16px" class="card" style="padding:16px">
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--text)">红色唯一性：</b>红色（#D94F4F）仅用于真正的破坏性操作——清空数据、删除、不可恢复的确认。关闭按钮、取消、错误提示框的图标都用主题反色（<code style="font-family:var(--font-mono);font-size:11px">--inverse</code>），不乱用红。</div>
     </div>
   </div>
 
@@ -768,7 +787,7 @@ body::-webkit-scrollbar { display: none; }
   </div>
 
   <div style="text-align:center;padding-top:40px;border-top:1px solid var(--border);margin-top:20px">
-    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v3.2 · Simplex × Concise · 2026.08.16</div>
+    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v3.3 · Simplex × Concise · 2026.08.16</div>
     <div style="font-size:10px;color:var(--text-faint);margin-top:4px;font-style:italic">"Simplex 温润优先 · Concise 秩序托底 · 规范是骨架不是枷锁"</div>
   </div>
 

@@ -73,10 +73,12 @@ Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩
   --radius-btn: 12px;
   --radius-card: 14px;
 
-  /* ── 阴影（最多 2 层，模糊差 ≥ 2×） ── */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+    /* ── 阴影（仅 2 级：实体感/空气感/呼吸感，装饰性阴影是视觉噪音） ── */
+  --shadow-air: 0 1px 3px rgba(26,26,26,0.04), 0 6px 20px -8px rgba(26,26,26,0.05);  /* 空气感：静态实体 */
+  --shadow-lift: 0 2px 6px rgba(26,26,26,0.05), 0 14px 36px -14px rgba(26,26,26,0.10); /* 呼吸感：hover 浮起 */
+  
+    /* ── 主题反色（关闭按钮专用，非红色） ── */
+    --inverse: #1A1A1A; --inverse-text: #FAFAF8;  /* dark: #DDE3EB / #16171A */
 
   /* ── 动效 ── */
   --ease-main: cubic-bezier(0.4, 0, 0.2, 1);   /* 80% 的过渡用这个 */
@@ -102,8 +104,8 @@ Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩
   --border: rgba(255,255,255,0.08);
   --text: #DDE3EB; --text-secondary: #888; --text-muted: #555;
   --accent: #2A8D84; --accent-glow: rgba(42,141,132,0.30);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.30);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
+  --shadow-air: 0 1px 3px rgba(0,0,0,0.22), 0 6px 20px -8px rgba(0,0,0,0.28);
+  --shadow-lift: 0 2px 6px rgba(0,0,0,0.26), 0 14px 36px -14px rgba(0,0,0,0.42);
 }
 ```
 
@@ -114,9 +116,11 @@ Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩
 | 颜色 | 禁止 `#333`、`red` 等随意色值，必须引用 Token |
 | 间距 | 必须是 4px 倍数：4/8/12/16/24/32/48 |
 | 圆角 | 同一界面 ≤ 3 种圆角值，嵌套容器内外差 2-4px |
-| 阴影 | 最多 2 层叠加，模糊差 ≥ 2× |
+| 阴影 | 只有 Air/Lift 2 级轻径向阴影，仅增强实体感/空气感/呼吸感；装饰性阴影禁止 |
 | 边框 | 所有纯色色块必须有 `1px solid var(--border)`，拒绝脏浅色 |
 | 强调色 | 面积 ≤ 15% 视觉重量，红色仅用于 danger |
+| 红色 | 唯一用途：破坏性操作（清空数据、删除、不可恢复确认）；关闭/取消用 `--inverse` 主题反色 |
+| Hover 隐藏 | 不常用功能（窗口控制、工具栏杂项）hover 浮现、移开即隐；按钮尺寸 ≥ 36px 保证可点性 |
 | 弹窗 | 禁止。详情/设置/新建 → 卡片原地延展（`max-height` + `opacity`） |
 | 动画 | 禁止 `linear`（进度条除外），所有 `transition` 必须指定 `timing-function` |
 | 状态机 | 每个交互组件必须有 default → hover → active → focus → disabled 全状态 |
@@ -151,8 +155,8 @@ Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩
   animation: breathShadow 4s var(--ease-main) infinite;
 }
 @keyframes breathShadow {
-  0%, 100% { box-shadow: var(--shadow-sm); }
-  50% { box-shadow: var(--shadow-md); }
+  0%, 100% { box-shadow: var(--shadow-air); }
+  50% { box-shadow: var(--shadow-lift); }
 }
 ```
 

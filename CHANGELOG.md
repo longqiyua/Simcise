@@ -4,6 +4,18 @@ All notable changes to the Simcise Design System are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.3.0] — 2026-08-16
+
+### Changed
+- **Shadow system overhaul** — 从 4 级（sm/md/lg/xl）压缩为 **2 级轻径向阴影**：`--shadow-air`（空气感）+ `--shadow-lift`（呼吸感）。大模糊 + 负 spread 让阴影径向弥散、边缘消失。装饰性阴影 = 视觉噪音，禁止。
+- **红色唯一性** — `--danger` 仅用于破坏性操作（清空数据、删除、不可恢复确认）。新增 `--inverse` 主题反色 Token 专供关闭/取消等中性强动作。
+- index.html topbar 新增窗口控制按钮实演：hover 浮现、移开即隐，关闭键悬停变主题反色。
+- Shadow 章节（15）重写，红色唯一性说明卡。
+
+### Added
+- **Hover 隐藏交互规范** — 不常用功能 hover 浮现、移开即隐，按钮最小 36px 保证可点性。
+- tokens.json：`shadow.air/lift`、`color.inverse/inverseText`、constraints 新增 `shadowLevels`/`hoverRevealMinButton`/`redUsage`。
+
 ## [3.2.0] — 2026-08-16
 
 ### Changed
