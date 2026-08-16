@@ -25,6 +25,8 @@ Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩
 2. **零弹窗** — 绝对禁止弹窗，一切通过卡片横/纵向延展实现
 3. **Token 驱动** — 所有视觉值必须通过 CSS 变量引用，禁止硬编码
 
+> **开放性原则：** 规范是骨架，不是枷锁。只要遵守 Token、间距、圆角这三条底线，其余自由发挥。Simcise 应该是沙漠里的绿洲——自然、温润、让人想停留——而不是贴满规则的狗皮膏药。
+
 ### Design Tokens（CSS 变量）
 
 ```css
@@ -86,12 +88,12 @@ Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩
   --duration-morph: 400ms;   /* 形态变形 */
 
   /* ── 字体 ── */
-  --font-latin: 'Nunito', -apple-system, sans-serif;
-  --font-cjk: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
-  --font-display: 'Outfit', 'Nunito', sans-serif;
+  --font-latin: 'Nunito', -apple-system, sans-serif;     /* 英文正文 */
+  --font-cjk: 'Noto Sans SC', 'PingFang SC', sans-serif; /* 中文正文 */
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;   /* 代码 & Token */
+  --font-display: 'Outfit', 'Nunito', sans-serif;         /* 装饰性数字标识、标题 */
   --font-size: 13px;
-  --line-height: 1.55;
+  --line-height: 1.6;
 }
 
 [data-theme="dark"] {

@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simcise Design System · Display</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
-   SIMCISE DESIGN TOKENS · AI Reference v3.0
-   Simcise · 2026.08.16 · Foundation + Enhancement
+   SIMCISE DESIGN TOKENS · AI Reference v3.2
+   Simcise · Simplex × Concise · 2026.08.16
    ═══════════════════════════════════════════════════ */
 
 :root, [data-theme="light"] {
@@ -32,7 +32,7 @@
   --font-cjk: 'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
   --font-latin: 'Nunito',-apple-system,BlinkMacSystemFont,sans-serif;
   --font-mono: 'JetBrains Mono','SF Mono','Consolas',monospace;
-  --font-display: 'Outfit','Nunito',sans-serif;
+  --font-display: 'Outfit','Nunito',sans-serif;  /* 仅用于装饰性数字标识、标题 */
 }
 [data-theme="dark"] {
   --bg: #16171A; --bg-secondary: #1C1D21; --bg-tertiary: #24262B;
@@ -49,12 +49,12 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 13px; line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { font-size: 13px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 body { font-family: var(--font-latin), var(--font-cjk); background: var(--bg); color: var(--text); transition: background 300ms var(--ease-main), color 300ms var(--ease-main); scrollbar-width: none; user-select: none; -webkit-user-select: none; }
 body::-webkit-scrollbar { display: none; }
 ::selection { background: var(--accent); color: white; }
 
-.display-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 40px 120px; }
+.display-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 40px 140px; }
 
 /* Top Bar */
 .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 64px; }
@@ -69,9 +69,9 @@ body::-webkit-scrollbar { display: none; }
 .theme-btn.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 0 16px var(--accent-glow); }
 
 /* Section */
-.section { margin-bottom: 88px; }
-.section-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.2px; }
-.section-title .num { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--text-muted); background: var(--bg-tertiary); padding: 3px 10px; border-radius: 8px; }
+.section { margin-bottom: 96px; }
+.section-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; letter-spacing: -0.3px; }
+.section-title .num { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--text-muted); background: var(--bg-tertiary); padding: 3px 12px; border-radius: 8px; letter-spacing: 0.5px; }
 .section-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
 .section-rule { font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 10px; border-left: 3px solid var(--accent); margin-bottom: 28px; line-height: 1.6; }
 .sub-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
@@ -247,13 +247,13 @@ body::-webkit-scrollbar { display: none; }
 .layer-badge.enhancement { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-100); }
 
 /* Layer Dividers */
-.layer-divider { display: flex; align-items: center; gap: 16px; margin: 80px 0 64px; }
+.layer-divider { display: flex; align-items: center; gap: 20px; margin: 96px 0 72px; }
 .layer-divider::before, .layer-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.layer-divider .layer-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; padding: 6px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
+.layer-divider .layer-tag { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.8px; white-space: nowrap; padding: 8px 20px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); }
 .layer-divider.enhancement .layer-tag { color: var(--accent); border-color: var(--accent-200); background: var(--accent-soft); }
 
-/* Enhancement section number */
-.section-title .num.e-num { color: var(--accent); background: var(--accent-soft); }
+/* Enhancement section number — Outfit decorative */
+.section-title .num.e-num { color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-100); }
 
 /* Light Showcase */
 .light-zone { border-radius: 14px; padding: 24px; border: 1px solid var(--border); position: relative; overflow: hidden; }
@@ -286,7 +286,7 @@ body::-webkit-scrollbar { display: none; }
   <div class="topbar">
     <div>
       <h1><span>Simcise</span> Design System</h1>
-      <div class="topbar-meta">v3.1 · Simplex × Concise · 2026.08.16</div>
+      <div class="topbar-meta">v3.2 · Simplex × Concise · 2026.08.16</div>
     </div>
     <div class="theme-switcher">
       <button class="theme-btn active" data-set-theme="light">Light</button>
@@ -301,7 +301,7 @@ body::-webkit-scrollbar { display: none; }
     <div class="philo-item"><b>生长优先</b>Elements morph in place — no destroy & recreate. A button becomes a close icon, a card unfolds.</div>
     <div class="philo-item"><b>零弹窗</b>Never popup — every detail grows from its source card. Restraint is a feature, not a limitation.</div>
   </div>
-  <div style="text-align:center;margin-top:-48px;margin-bottom:56px;font-size:12px;color:var(--text-muted);letter-spacing:0.5px"><em>Simplex × Concise</em> — Simplex 温润优先，Concise 秩序托底。理性的秩序感 × 温润的呼吸感，混合而非对立。</div>
+  <div style="text-align:center;margin-top:-48px;margin-bottom:64px;font-size:12px;color:var(--text-muted);letter-spacing:0.5px;line-height:1.8"><em>Simplex × Concise</em> — 温润的呼吸感 × 理性的秩序感，混合而非对立。<br>规范是骨架，不是枷锁。遵守 Token 和间距，其余自由发挥。</div>
 
   <!-- ═══════════ PART I · 信息 Information ═══════════ -->
   <div class="layer-divider">
@@ -370,15 +370,31 @@ body::-webkit-scrollbar { display: none; }
   <!-- 04 · Typography -->
   <div class="section">
     <div class="section-title"><span class="num">04</span> Typography</div>
-    <div class="section-desc">Nunito (Latin) + Noto Sans SC (CJK) + Outfit (Display) + JetBrains Mono (Code)</div>
-    <div class="card" style="padding:20px">
-      <div class="type-row"><div class="type-label">2XL · 32px</div><div class="type-sample" style="font-family:var(--font-display);font-size:32px;font-weight:600">Page Title 页面标题</div></div>
-      <div class="type-row"><div class="type-label">XL · 24px</div><div class="type-sample" style="font-family:var(--font-display);font-size:24px;font-weight:600">Section Title 区块标题</div></div>
-      <div class="type-row"><div class="type-label">LG · 20px</div><div class="type-sample" style="font-family:var(--font-latin);font-size:20px;font-weight:500">Sidebar Group 侧边栏分组</div></div>
-      <div class="type-row"><div class="type-label">Base · 16px</div><div class="type-sample" style="font-size:16px">Body text — The quick brown fox jumps over the lazy dog</div></div>
-      <div class="type-row"><div class="type-label">SM · 14px</div><div class="type-sample" style="font-size:14px;color:var(--text-secondary)">Card content — 每一个元素的存在都需要理由</div></div>
-      <div class="type-row"><div class="type-label">XS · 12px</div><div class="type-sample" style="font-size:12px;color:var(--text-muted)">Metadata · Timestamps · Tags</div></div>
-      <div class="type-row"><div class="type-label">Mono</div><div class="type-sample" style="font-family:var(--font-mono);font-size:13px">--accent: #1A6B66; font-size: 14px;</div></div>
+    <div class="section-desc">Nunito (English) · 思源黑体 (中文) · Outfit (装饰数字) · JetBrains Mono (Code)</div>
+    <div class="grid-2">
+      <div class="card" style="padding:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px">Nunito · English Body</div>
+        <div style="font-family:var(--font-latin);font-size:15px;line-height:1.7;color:var(--text)">The quick brown fox jumps over the lazy dog. Every element exists for a reason.</div>
+        <div style="margin-top:10px;font-family:var(--font-mono);font-size:10px;color:var(--text-faint)">var(--font-latin)</div>
+      </div>
+      <div class="card" style="padding:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px">思源黑体 · 中文正文</div>
+        <div style="font-family:var(--font-cjk);font-size:15px;line-height:1.7;color:var(--text)">每一个元素的存在都需要理由，没有理由的元素不应该出现。</div>
+        <div style="margin-top:10px;font-family:var(--font-mono);font-size:10px;color:var(--text-faint)">var(--font-cjk)</div>
+      </div>
+    </div>
+    <div style="margin-top:20px" class="grid-2">
+      <div class="card" style="padding:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px">Outfit · 装饰数字 & 标题</div>
+        <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--accent);letter-spacing:-0.5px">01 02 03 · E1 E2 E3</div>
+        <div style="margin-top:6px;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text)">Section Titles & Decorative Numbers</div>
+        <div style="margin-top:10px;font-family:var(--font-mono);font-size:10px;color:var(--text-faint)">var(--font-display)</div>
+      </div>
+      <div class="card" style="padding:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px">JetBrains Mono · Code & Token</div>
+        <div style="font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--text)">--accent: #1A6B66;<br>padding: 10px 28px;</div>
+        <div style="margin-top:10px;font-family:var(--font-mono);font-size:10px;color:var(--text-faint)">var(--font-mono)</div>
+      </div>
     </div>
   </div>
 
@@ -752,8 +768,8 @@ body::-webkit-scrollbar { display: none; }
   </div>
 
   <div style="text-align:center;padding-top:40px;border-top:1px solid var(--border);margin-top:20px">
-    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v3.1 · Simplex × Concise · 2026.08.16</div>
-    <div style="font-size:10px;color:var(--text-faint);margin-top:4px;font-style:italic">"Breathing rhythm · Fluid morph · Surprise within · Zero dialogs · Ceramic warmth · Light awareness"</div>
+    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v3.2 · Simplex × Concise · 2026.08.16</div>
+    <div style="font-size:10px;color:var(--text-faint);margin-top:4px;font-style:italic">"Simplex 温润优先 · Concise 秩序托底 · 规范是骨架不是枷锁"</div>
   </div>
 
 </div>

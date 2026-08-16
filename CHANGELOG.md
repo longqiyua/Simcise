@@ -4,6 +4,19 @@ All notable changes to the Simcise Design System are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.2.0] — 2026-08-16
+
+### Changed
+- **Typography overhaul** — 3+1 font system: Nunito (English) + 思源黑体 (Chinese) + Outfit (decorative numbers) + JetBrains Mono (code)
+- Section numbers & Part dividers now use Outfit (decorative, not mono)
+- Line height updated: base 1.55 → 1.6, CJK 1.65 → 1.7
+- Removed unused Poppins font from Google Fonts link
+
+### Added
+- **Openness principle** — “规范是骨架，不是枷锁。遵守 Token 和间距，其余自由发挥。”
+- Typography section redesigned: 4-card layout showcasing each font with live samples
+- Oasis philosophy: “Simcise 应该是沙漠里的绿洲，不是狗皮膏药”
+
 ## [3.1.0] — 2026-08-16
 
 ### Changed
