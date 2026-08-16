@@ -4,6 +4,19 @@ All notable changes to the Simcise Design System are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.1.0] — 2026-08-16
+
+### Changed
+- **Core philosophy refined** — "Simplex × Concise": Simplex (温润、舒适、呼吸感) 优先，Concise (理性秩序、数学简洁) 托底。两者混合而非对立。
+- Display.html renamed to **index.html** (now serves as both design system display and GitHub Pages entry)
+- Page restructured into **5 Parts**: Information → Interaction → Motion → Enhancement → Adaptation
+- Philosophy banner rewritten around the dual-core concept
+
+### Added
+- **Part dividers** — 5 visual section dividers with Part labels (信息/交互/动效/质感/适配)
+- **Section 30: Theme & Adaptation** — Light/Dark cards, accessibility, responsive breakpoints, prefers-reduced-motion
+- **E9 Binary Star Spinner** — dual orbit loading animation with mix-blend-mode overlap
+
 ## [3.0.0] — 2026-08-16
 
 ### Changed

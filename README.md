@@ -1,6 +1,8 @@
 # Simcise Design System
 
-> Simple × Concise — 界面在你不需要它的时候消失，在你需要它的时候生长出来。
+> **Simplex × Concise** — Simplex 温润优先，Concise 秩序托底。界面在你不需要它的时候消失，在你需要它的时候生长出来。
+
+Simcise = **Simplex**（温润、舒适、呼吸感）× **Concise**（理性秩序、数学简洁、和谐）。Simplex 是用户首先感受到的，Concise 是支撑一切的骨架。两者混合而非对立。
 
 Simcise 是一套产品级 UI 设计系统，为多产品矩阵提供统一的视觉语言、交互范式和组件规范。
 
@@ -8,14 +10,15 @@ Simcise 是一套产品级 UI 设计系统，为多产品矩阵提供统一的�
 
 **每一个元素的存在都需要理由，没有理由的元素不应该出现。**
 
-### 双层架构
+### 五大板块
 
-| 层级 | 定位 | 内容 | 何时用 |
-|---|---|---|---|
-| **Foundation** 基础层 | DNA — 必须遵守 | Token 系统、硬性约束、组件基础形态 | 始终 |
-| **Enhancement** 修饰层 | 插件 — 按需叠加 | 呼吸感、陶瓷质感、光感、变形、灵动光标等 8 个模块 | 产品需要额外质感时 |
-
-> 遵守基础层，产出就已经是 Simcise 风格。修饰层是可选的，不用也不影响一致性。
+| 板块 | 定位 | 内容 |
+|---|---|---|
+| **Part I · 信息** | Concise 理性秩序 | 色彩、字体、间距、圆角、阴影、产品色名 |
+| **Part II · 交互** | Simplex 温润舒适 | 按钮、输入框、Toggle、卡片、导航、Toast、卡片延展、变形 |
+| **Part III · 动效** | Simplex × Concise 交融 | 缓动曲线、呼吸感、加载状态 |
+| **Part IV · 质感** | Simplex 可选修饰 | 陶瓷温润、光感模式、毛玻璃、灵动光标、双星加载器等 9 个模块 |
+| **Part V · 适配** | Concise 环境响应 | Light/Dark、响应式、无障碍 |
 
 ### 三条铁律
 
@@ -28,10 +31,9 @@ Simcise 是一套产品级 UI 设计系统，为多产品矩阵提供统一的�
 ```
 Simcise/
 ├── Lesong Art：Simcise 设计规范.md   # 完整规范（~1700 行，深入查阅）
-├── Display.html                      # 产品级展示页（21 章节）
+├── index.html                        # 产品级展示页（5 大板块）+ GitHub Pages 入口
 ├── SKILL.md                          # AI Skill 调用入口（★ 首选参考）
 ├── tokens.json                       # 机器可读 Design Tokens
-├── index.html                        # GitHub Pages 着陆页
 ├── CHANGELOG.md                      # 版本历史
 ├── CONTRIBUTING.md                   # 贡献指南
 ├── README.md                         # 本文件
@@ -47,7 +49,7 @@ Simcise/
 
 ### 预览设计系统
 
-直接在浏览器中打开 `Display.html`，支持 Light / Dark 主题切换。
+直接在浏览器中打开 `index.html`，支持 Light / Dark 主题切换。
 
 在线预览：[longqiyua.github.io/Simcise](https://longqiyua.github.io/Simcise/)
 
