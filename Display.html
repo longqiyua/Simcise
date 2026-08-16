@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
-   SIMCISE DESIGN TOKENS · AI Reference v2.3
-   Simcise · 2026.08.16
+   SIMCISE DESIGN TOKENS · AI Reference v3.0
+   Simcise · 2026.08.16 · Foundation + Enhancement
    ═══════════════════════════════════════════════════ */
 
 :root, [data-theme="light"] {
@@ -241,6 +241,20 @@ body::-webkit-scrollbar { display: none; }
 .ceramic-chip:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6); border-color: var(--accent-200); color: var(--accent); }
 .ceramic-chip:active { transform: scale(0.97) translateY(0); }
 
+/* Layer Badges */
+.layer-badge { display: inline-block; font-family: var(--font-mono); font-size: 9px; font-weight: 600; padding: 2px 8px; border-radius: 6px; letter-spacing: 0.5px; vertical-align: middle; margin-left: 8px; }
+.layer-badge.foundation { background: var(--bg-tertiary); color: var(--text-muted); border: 1px solid var(--border); }
+.layer-badge.enhancement { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-100); }
+
+/* Layer Dividers */
+.layer-divider { display: flex; align-items: center; gap: 16px; margin: 80px 0 64px; }
+.layer-divider::before, .layer-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.layer-divider .layer-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; padding: 6px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
+.layer-divider.enhancement .layer-tag { color: var(--accent); border-color: var(--accent-200); background: var(--accent-soft); }
+
+/* Enhancement section number */
+.section-title .num.e-num { color: var(--accent); background: var(--accent-soft); }
+
 /* Light Showcase */
 .light-zone { border-radius: 14px; padding: 24px; border: 1px solid var(--border); position: relative; overflow: hidden; }
 .light-zone::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.5) 0%, transparent 60%); pointer-events: none; }
@@ -253,7 +267,7 @@ body::-webkit-scrollbar { display: none; }
   <div class="topbar">
     <div>
       <h1><span>Simcise</span> Design System</h1>
-      <div class="topbar-meta">v2.3 · AI Reference · 2026.08.16 · Lesong Design</div>
+      <div class="topbar-meta">v3.0 · Foundation + Enhancement · 2026.08.16</div>
     </div>
     <div class="theme-switcher">
       <button class="theme-btn active" data-set-theme="light">Light</button>
@@ -269,7 +283,10 @@ body::-webkit-scrollbar { display: none; }
     <div class="philo-item"><b>Zero Dialogs</b>Never popup — always card expand, morph, flow</div>
   </div>
 
-  <div class="topbar-meta" style="margin-top:-36px;margin-bottom:48px;font-size:11px;color:var(--text-muted)">Core: all transitions via card horizontal/vertical expansion & morphing. One button morphs, never two buttons swap. Ceramic warmth + light awareness everywhere.</div>
+  <!-- ═══════════ FOUNDATION LAYER ═══════════ -->
+  <div class="layer-divider">
+    <span class="layer-tag">Foundation · 基础层 — MUST</span>
+  </div>
 
   <!-- 01 · Accent Color Family -->
   <div class="section">
@@ -377,7 +394,7 @@ body::-webkit-scrollbar { display: none; }
   <!-- 06 · Inputs + Dynamic Cursor -->
   <div class="section">
     <div class="section-title"><span class="num">06</span> Inputs + Dynamic Cursor</div>
-    <div class="section-desc">Static label · No floating label · 10px radius · Fluid cursor follows caret position</div>
+    <div class="section-desc">Static label · No floating label · 10px radius · <span style="color:var(--accent)">Dynamic cursor → E1</span></div>
     <div class="section-rule"><b>Rule:</b> Native caret hidden, replaced by accent-colored 1.8px thin bar. 120ms ease glide — feels continuous, not teleporting. Stops 600ms → enters blink. Text selection restricted globally.</div>
     <div class="card" style="padding:20px">
       <div class="grid-2">
@@ -461,7 +478,7 @@ body::-webkit-scrollbar { display: none; }
   <!-- 12 · Loading — Orbit spinner + skeleton -->
   <div class="section">
     <div class="section-title"><span class="num">12</span> Loading States</div>
-    <div class="section-desc">Orbit ball (fast-slow alternating) · Skeleton shimmer</div>
+    <div class="section-desc">Shimmer placeholders · <span style="color:var(--accent)">Orbit spinner → E2</span></div>
     <div class="section-rule"><b>Rule:</b> Spinner is NOT uniform rotation. A ball on a circular track, pushed — fast-slow-fast-slow alternating. Like a marble rolling down a curved ramp.</div>
     <div class="card" style="padding:20px">
       <div class="flex-row" style="margin-bottom:24px;gap:24px">
@@ -532,9 +549,14 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- 17 · Breathing & Life -->
+  <!-- ═══════════ ENHANCEMENT LAYER ═══════════ -->
+  <div class="layer-divider enhancement">
+    <span class="layer-tag">Enhancement · 修饰层 — OPTIONAL</span>
+  </div>
+
+  <!-- E1 · Breathing & Life -->
   <div class="section">
-    <div class="section-title"><span class="num">17</span> Breathing & Life</div>
+    <div class="section-title"><span class="num e-num">E1</span> Breathing & Life</div>
     <div class="section-desc">Subtle rhythm — elements feel alive, never static, never anxious</div>
     <div class="section-rule"><b>Rule:</b> Every idle element has a breathing animation. Slow (3-5s cycle). Barely perceptible. The interface breathes so the user doesn't have to.</div>
     <div class="grid-3">
@@ -544,9 +566,9 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- 18 · Morphing FAB -->
+  <!-- E2 · Morphing FAB -->
   <div class="section">
-    <div class="section-title"><span class="num">18</span> Morphing · One Button, Two Faces</div>
+    <div class="section-title"><span class="num e-num">E2</span> Morphing · One Button, Two Faces</div>
     <div class="section-desc" id="fabDesc">Click the + button — it rotates and morphs into × (one element, fluid transform)</div>
     <div class="section-rule"><b>Rule:</b> If one button can morph, don't use two. Plus → X via rotation. The horizontal line shrinks away, vertical line rotates 45°. Same DOM element, fluid transition.</div>
     <div class="card" style="padding:24px">
@@ -574,9 +596,9 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- 19 · Card Expansion -->
+  <!-- E3 · Card Expansion -->
   <div class="section">
-    <div class="section-title"><span class="num">19</span> Card Expansion · Zero Dialogs</div>
+    <div class="section-title"><span class="num e-num">E3</span> Card Expansion · Zero Dialogs</div>
     <div class="section-desc">All interactions through card morphing — horizontal & vertical expansion, never popups</div>
     <div class="section-rule"><b>Rule:</b> ABSOLUTELY NO POPUPS. Every detail view, form, or panel grows from its source card. The card stretches, content reveals, border morphs to accent. Reversible.</div>
     <div class="grid-2">
@@ -610,9 +632,9 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- 20 · Ceramic Texture -->
+  <!-- E4 · Ceramic Texture -->
   <div class="section">
-    <div class="section-title"><span class="num">20</span> Ceramic · Fluid + Warmth</div>
+    <div class="section-title"><span class="num e-num">E4</span> Ceramic · Fluid + Warmth</div>
     <div class="section-desc">Porcelain warmth · Subtle gradient · Inner light · Smooth as glazed pottery</div>
     <div class="section-rule"><b>Rule:</b> Surfaces feel like ceramic — warm gradient (not flat color), soft layered shadows, inner highlight at top edge. Hover lifts gently. Everything feels touchable and smooth.</div>
     <div class="grid-2">
@@ -621,9 +643,9 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- 21 · Light Awareness -->
+  <!-- E5 · Light Awareness -->
   <div class="section">
-    <div class="section-title"><span class="num">21</span> Light Awareness · Global</div>
+    <div class="section-title"><span class="num e-num">E5</span> Light Awareness · Global</div>
     <div class="section-desc">Light has direction and warmth — surfaces respond to a virtual light source</div>
     <div class="section-rule"><b>Rule:</b> Light comes from top-left. All surfaces show: top edge highlight (inner glow), bottom edge shadow (subtle border darkening). Consistent across every component, every product.</div>
     <div class="grid-3">
@@ -637,7 +659,7 @@ body::-webkit-scrollbar { display: none; }
   </div>
 
   <div style="text-align:center;padding-top:40px;border-top:1px solid var(--border);margin-top:20px">
-    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v2.3 · Lesong Design · AI Reference · 2026.08.16</div>
+    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v3.0 · Foundation + Enhancement · 2026.08.16</div>
     <div style="font-size:10px;color:var(--text-faint);margin-top:4px;font-style:italic">"Breathing rhythm · Fluid morph · Surprise within · Zero dialogs · Ceramic warmth · Light awareness"</div>
   </div>
 
