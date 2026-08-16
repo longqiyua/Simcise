@@ -2,7 +2,7 @@
 
 > Simple × Concise — 界面在你不需要它的时候消失，在你需要它的时候生长出来。
 
-Simcise 是一套产品级 UI 设计系统。当构建、修改或审查任何产品的界面时，调用本 skill 确保设计一致性。
+Simcise 是一套产品级 UI 设计系统。分为**基础层**和**修饰层**：基础层是 DNA，遵守即可保持一致性；修饰层是可选插件，按需调用增加质感。
 
 ## When to Use
 
@@ -11,89 +11,345 @@ Simcise 是一套产品级 UI 设计系统。当构建、修改或审查任何�
 - 审查 UI 设计是否符合规范
 - 需要设计 Token、色值、间距、圆角、动画等参考
 
-## Core Principles
+---
+
+## 基础层 Foundation — MUST
+
+> 遵守这一层，产出就已经是 Simcise 风格。不可违反，不可跳过。
+
+### 三条铁律
 
 1. **每一个元素的存在都需要理由** — 没有理由的元素不应该出现
-2. **呼吸感** — 元素有微妙的生命节奏（3-5s 微动效），永不安静也永不焦虑
-3. **流动变形** — 元素原地变形，不销毁重建（生长优先）
-4. **无边界操作感** — 按钮不只是按钮，加号旋转变成叉号
-5. **零弹窗** — 绝对禁止弹窗，一切通过卡片横/纵向延展实现
-6. **陶瓷温润** — 暖渐变 + 内高光 + 柔光阴影，触感如釉面陶瓷
-7. **光感统一** — 光源统一左上，所有表面响应同一方向的光
+2. **零弹窗** — 绝对禁止弹窗，一切通过卡片横/纵向延展实现
+3. **Token 驱动** — 所有视觉值必须通过 CSS 变量引用，禁止硬编码
 
-## Visual Rules
+### Design Tokens（CSS 变量）
 
-- **强调色 = 一个色系**：一个核心色相 → 7 级延展（50-700），默认黑白灰无色
-- **颜色命名 = 变体名**：不能第一眼看出是什么颜色（Deep Sea Teal, Brick Rust...）
-- **红色 = 仅危险**：#D94F4F 永远只用于 danger，绝不作为强调色
-- **纯色始终有线**：拒绝脏兮兮的浅色，所有色块底部描边
-- **大圆角统一**：min 8px · input 10px · btn 12px · card 14-16px · 全局一致
-- **间距 = 4px 倍数**：4/8/12/16/24/32/48
-- **阴影 = 层级非装饰**：最多 2 层，模糊差 ≥ 2×
-- **毛玻璃 4 级**：10px / 16px / 32px / 48px+
-- **强调色面积 ≤ 15%** 视觉重量
+```css
+:root {
+  /* ── 背景 ── */
+  --bg: #FAFAF8;           /* 页面底色 */
+  --bg-secondary: #F5F5F0; /* 二级底 */
+  --bg-tertiary: #EEEBE6;  /* 三级底 / 禁用态 */
+  --surface: #FFFFFF;       /* 卡片表面（唯一纯白） */
 
-## Interaction Rules
+  /* ── 文字 ── */
+  --text: #1A1A1A;
+  --text-secondary: #666;
+  --text-muted: #999;
 
-- **动画时长**：微交互 100-150ms · 显隐 150-200ms · 展开 250-320ms · 变形 300-400ms · 呼吸 2-8s
-- **主曲线**：`cubic-bezier(0.4, 0, 0.2, 1)`
-- **生长优先**：状态变化通过同一元素形态延展，不销毁旧元素
-- **呼吸感**：每个空闲元素有微妙呼吸动画，barely perceptible
-- **无边界**：+ 旋转 → ×，卡片原地延展
-- **陶瓷感**：`linear-gradient(160deg)` + `inset 0 1px 0 rgba(255,255,255,0.7)` + 多层柔光阴影
-- **光感**：`radial-gradient(ellipse at 30% 20%)` 模拟左上光源
-- **灵动光标**：隐藏原生 caret，1.8px 强调色细条，120ms ease 跟随
-- **文本选择**：全局 `user-select: none`
+  /* ── 边框 ── */
+  --border: #E5E5E5;
+  --border-warm: #D8D6D0;
 
-## Component Rules
+  /* ── 强调色（一个色系，7 级延展） ── */
+  --accent-50: #E8F0EF;    /* 选中背景 */
+  --accent-100: #C5DDD9;   /* 标签边框 */
+  --accent-200: #8FBFB8;   /* hover 背景 */
+  --accent-300: #5A9E96;   /* 链接 hover */
+  --accent-400: #3D857E;   /* 次要按钮 */
+  --accent: #1A6B66;        /* ★ 核心色 — 主操作 */
+  --accent-600: #145551;   /* 按压态 */
+  --accent-700: #0E3F3C;   /* 浅色底上的文字 */
+  --accent-glow: rgba(26,107,102,0.25);
 
-- **零弹窗**：详情/表单/面板 → 卡片原地延展，`max-height` + `opacity` 过渡
-- **Toggle**：圆角矩形按钮（非滑条），On 发光 / Off 变暗，标签 1.5s 渐隐 → 柔光灯
-- **按钮**：银行卡形长条圆角矩形 `padding: 10px 28px; radius: 12px`
-- **加载**：轨道小球快慢交替（非匀速旋转）
-- **卡片**：hover 浮起 + 边框 → 强调色，点击原地延展
+  /* ── 语义色 ── */
+  --danger: #D94F4F;        /* 仅用于危险，绝不做强调色 */
+  --success: #059669;
+  --warning: #F59E0B;
+  --info: #3B82F6;
 
-## Vibe Coding Rules
+  /* ── 间距（4px 倍数） ── */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-6: 24px; --space-8: 32px;
 
-当 AI 生成 UI 代码时，必须遵循以下硬性约束：
+  /* ── 圆角 ── */
+  --radius-sm: 8px;    /* 最小圆角 */
+  --radius-input: 10px;
+  --radius-btn: 12px;
+  --radius-card: 14px;
 
-1. **先写 CSS 变量** — 所有色值、间距、圆角、阴影、缓动必须通过 `:root` 变量引用，禁止硬编码
-2. **组件必须有状态机** — 每个交互组件（按钮/输入框/卡片/导航项）必须定义 default → hover → active → focus → disabled 全状态
-3. **动画必须有曲线** — 禁止 `linear`（进度条除外），禁止无过渡的瞬变，所有 `transition` 必须指定 `timing-function`
-4. **颜色必须走 Token** — 不使用 `#333`、`red` 等随意色值，必须引用 `--text`、`--accent`、`--danger` 等语义变量
-5. **圆角必须统一** — 同一界面内圆角值不超过 3 种，嵌套容器内外差 2-4px
-6. **边框不可缺** — 所有纯色色块必须有边框线（`1px solid var(--border)`），拒绝脏浅色
-7. **弹窗 = 禁止** — 任何「查看详情」「设置」「新建」都通过卡片原地延展实现
-8. **暗色模式必须适配** — 每个组件必须有 `[data-theme="dark"]` 对应样式
+  /* ── 阴影（最多 2 层，模糊差 ≥ 2×） ── */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+
+  /* ── 动效 ── */
+  --ease-main: cubic-bezier(0.4, 0, 0.2, 1);   /* 80% 的过渡用这个 */
+  --ease-enter: cubic-bezier(0.22, 0.95, 0.35, 1);
+  --ease-bounce: cubic-bezier(0.22, 1.2, 0.36, 1);
+  --duration-micro: 150ms;   /* hover / focus */
+  --duration-enter: 200ms;   /* 元素显隐 */
+  --duration-panel: 300ms;   /* 面板展开 */
+  --duration-morph: 400ms;   /* 形态变形 */
+
+  /* ── 字体 ── */
+  --font-latin: 'Nunito', -apple-system, sans-serif;
+  --font-cjk: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font-display: 'Outfit', 'Nunito', sans-serif;
+  --font-size: 13px;
+  --line-height: 1.55;
+}
+
+[data-theme="dark"] {
+  --bg: #16171A; --bg-secondary: #1C1D21; --bg-tertiary: #24262B;
+  --surface: #1C1D21;
+  --border: rgba(255,255,255,0.08);
+  --text: #DDE3EB; --text-secondary: #888; --text-muted: #555;
+  --accent: #2A8D84; --accent-glow: rgba(42,141,132,0.30);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.30);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
+}
+```
+
+### 硬性约束
+
+| 约束 | 规则 |
+|---|---|
+| 颜色 | 禁止 `#333`、`red` 等随意色值，必须引用 Token |
+| 间距 | 必须是 4px 倍数：4/8/12/16/24/32/48 |
+| 圆角 | 同一界面 ≤ 3 种圆角值，嵌套容器内外差 2-4px |
+| 阴影 | 最多 2 层叠加，模糊差 ≥ 2× |
+| 边框 | 所有纯色色块必须有 `1px solid var(--border)`，拒绝脏浅色 |
+| 强调色 | 面积 ≤ 15% 视觉重量，红色仅用于 danger |
+| 弹窗 | 禁止。详情/设置/新建 → 卡片原地延展（`max-height` + `opacity`） |
+| 动画 | 禁止 `linear`（进度条除外），所有 `transition` 必须指定 `timing-function` |
+| 状态机 | 每个交互组件必须有 default → hover → active → focus → disabled 全状态 |
+| 暗色 | 每个组件必须有 `[data-theme="dark"]` 对应样式 |
+| 文本 | `user-select: none`，app 化体验 |
+
+### 组件基础形态
+
+| 组件 | 规格 |
+|---|---|
+| 按钮 | 银行卡形长条：`padding: 10px 28px; radius: 12px; border: 1px solid` |
+| Toggle | 圆角矩形按钮（非滑条）：`min-width: 52px; height: 30px; radius: 10px` |
+| 卡片 | `radius: 14px; padding: 24px; border: 1px solid var(--border)` |
+| 输入框 | `radius: 10px; height: 40px; border: 1px solid var(--border)` |
+| 展开 | `max-height: 0→300px; opacity: 0→1; transition: 300ms` |
+
+---
+
+## 修饰层 Enhancement — OPTIONAL
+
+> 基础层之上，按需叠加。每个模块独立，不互相依赖，不用也不影响一致性。
+
+### E1 · 呼吸感 Breathing
+
+> 空闲元素有微妙生命节奏，barely perceptible。
+
+**何时用**：页面有空置卡片、按钮、图标时。
+**何时不用**：密集数据表格、表单区域。
+
+```css
+.breathing {
+  animation: breathShadow 4s var(--ease-main) infinite;
+}
+@keyframes breathShadow {
+  0%, 100% { box-shadow: var(--shadow-sm); }
+  50% { box-shadow: var(--shadow-md); }
+}
+```
+
+### E2 · 陶瓷温润 Ceramic
+
+> 暖渐变 + 内高光 + 柔光阴影，触感如釉面陶瓷。
+
+**何时用**：主要容器、Now Playing 卡片、重要面板。
+**何时不用**：列表项、表格行、密集区域。
+
+```css
+.ceramic {
+  background: linear-gradient(160deg, var(--surface) 0%, var(--bg-secondary) 100%);
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.04),
+    0 8px 24px rgba(0,0,0,0.03),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+/* dark mode: inset highlight → rgba(255,255,255,0.05) */
+```
+
+### E3 · 光感模式 Light Awareness
+
+> 统一光源左上，所有表面响应同一方向的光。
+
+**何时用**：全局生效，作为页面级背景。
+**何时不用**：与深色沉浸式背景冲突时关闭。
+
+```css
+.light-aware-bg {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 60%),
+    var(--bg);
+}
+/* dark mode: rgba(255,255,255,0.4) → rgba(255,255,255,0.03) */
+```
+
+### E4 · 形态流动 Morphing FAB
+
+> + 按钮原地变形为 ×，单元素形态流动。
+
+**何时用**：页面主操作按钮（新建/添加）。
+**何时不用**：工具栏内的小按钮。
+
+```css
+.morph-fab {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--accent); border: 1px solid var(--accent-600);
+  position: relative;
+}
+.morph-fab .plus-line {
+  position: absolute; width: 20px; height: 2px;
+  background: white; top: 50%; left: 50%;
+}
+.morph-fab .plus-h {
+  transform: translate(-50%, -50%);
+  transition: opacity 200ms, width 200ms;
+}
+.morph-fab .plus-v {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 300ms var(--ease-bounce);
+}
+/* active state: + → × */
+.morph-fab.active { background: var(--danger); border-color: #C44545; }
+.morph-fab.active .plus-h { opacity: 0; width: 0; }
+.morph-fab.active .plus-v { transform: translate(-50%, -50%) rotate(135deg); }
+```
+
+### E5 · 柔光灯 Toggle
+
+> On 发光 / Off 变暗，标签 1.5s 渐隐，只剩发光按钮。
+
+**何时用**：设置面板中的开关。
+**何时不用**：表单内的 checkbox 替代。
+
+```css
+.toggle-btn {
+  min-width: 52px; height: 30px; padding: 0 14px;
+  border-radius: 10px; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 600;
+  transition: all 300ms var(--ease-main);
+}
+.toggle-btn.on {
+  background: var(--accent); color: white;
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 4px var(--accent-glow);
+}
+.toggle-btn.off {
+  background: var(--bg-tertiary); color: var(--text-muted);
+  box-shadow: none;
+}
+.toggle-btn .toggle-label {
+  transition: opacity 500ms var(--ease-main);
+}
+/* JS: 显示标签 1.5s 后 addClass('hide-label') */
+```
+
+### E6 · 灵动光标 Dynamic Cursor
+
+> 隐藏原生 caret，1.8px 强调色细条，120ms ease 跟随。
+
+**何时用**：主要输入框、搜索框。
+**何时不用**：textarea 多行编辑、代码编辑器（保留原生体验）。
+
+```css
+.dc-input { caret-color: transparent; }
+.dc-caret {
+  position: absolute; width: 1.8px; height: 1.45em;
+  background: var(--accent); border-radius: 1px;
+  transition: transform 120ms cubic-bezier(0.25,0.46,0.45,0.94), opacity 180ms;
+  box-shadow: 0 0 4px var(--accent-glow);
+}
+.dc-caret.is-blinking { animation: dcBlink 1.06s steps(2,start) infinite; }
+@keyframes dcBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0.16; } }
+/* 需要配合 DynamicCursor JS 模块 */
+```
+
+### E7 · 轨道小球 Orbit Spinner
+
+> 快慢交替的轨道旋转，非匀速。
+
+**何时用**：页面级加载、异步操作等待。
+**何时不用**：按钮内 loading（用简单 dots）。
+
+```css
+.orbit-spinner {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--border);
+  position: relative;
+  animation: orbitSpin 1.2s var(--ease-main) infinite;
+}
+.orbit-spinner::after {
+  content: ''; position: absolute;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); top: -3px; left: 50%;
+  transform: translateX(-50%);
+}
+@keyframes orbitSpin {
+  0% { transform: rotate(0deg); }
+  40% { transform: rotate(180deg); }   /* 快 */
+  100% { transform: rotate(360deg); }  /* 慢 */
+}
+```
+
+### E8 · 毛玻璃 Glassmorphism
+
+> 4 级模糊：10 / 16 / 32 / 48px+。
+
+**何时用**：浮层、下拉菜单、遮罩背景。
+**何时不用**：大面积背景（性能敏感）。
+
+```css
+.glass-light  { backdrop-filter: blur(10px); }   /* tooltip、浮动卡片 */
+.glass-medium { backdrop-filter: blur(16px); }   /* 右键菜单、下拉 */
+.glass-heavy  { backdrop-filter: blur(32px); }   /* 遮罩层 */
+.glass-full   { backdrop-filter: blur(48px); }   /* 沉浸式背景 */
+```
+
+---
+
+## Vibe Coding Checklist
+
+AI 生成代码时的快速检查清单：
+
+- [ ] 所有颜色走 Token？（`var(--accent)` 而非 `#1A6B66`）
+- [ ] 间距是 4 的倍数？（12px ✓ 13px ✗）
+- [ ] 圆角 ≤ 3 种？
+- [ ] 纯色块有边框？
+- [ ] 有暗色模式对应样式？
+- [ ] 交互组件有完整状态机？
+- [ ] 动画有 `timing-function`？
+- [ ] 零弹窗？（用卡片延展替代）
+
+---
 
 ## Design Language References
 
-Simcise 从以下大厂设计语言中汲取灵感，保持独立哲学但借鉴系统化方法：
-
 | 设计语言 | 借鉴点 | Simcise 对应 |
 |---|---|---|
-| **Material Design 3** (Google) | Dynamic Color 色系延展、Motion System | 强调色 7 级延展 + 动画分类时长 |
-| **Apple HIG** | 留白哲学、Deferred 层级、Depth | 呼吸感 + 负空间即内容 |
-| **Ant Design** | 组件状态机、Design Token 体系 | 全组件状态机 + CSS 变量驱动 |
+| **Material Design 3** | Dynamic Color 色系延展、Motion System | 强调色 7 级延展 + 动画分类时长 |
+| **Apple HIG** | 留白哲学、Deferred 层级 | 呼吸感 + 负空间即内容 |
+| **Ant Design** | 组件状态机、Token 体系 | 全组件状态机 + CSS 变量驱动 |
 | **Shopify Polaris** | 组件驱动、无障碍优先 | `user-select`、`focus-visible`、对比度 |
 | **IBM Carbon** | 系统化 Token、严格间距网格 | 4px 基础单位 + 全量 Token 表 |
-| **GitHub Primer** | CSS Variables 主题切换、功能色 | `data-theme` 切换 + 语义色层 |
+| **GitHub Primer** | CSS Variables 主题切换 | `data-theme` 切换 + 语义色层 |
 | **Atlassian Design** | 跨产品一致性、动效原则 | 主曲线 80% 统一 + 产品个性曲线 |
 
-**核心差异**：大厂设计语言追求「面面俱到的规范文档」，Simcise 追求「AI 可直接执行的约束系统」。不是告诉你「可以怎么做」，而是告诉你「必须怎么做、禁止怎么做」。
+**核心差异**：大厂追求「面面俱到的文档」，Simcise 追求「AI 可直接执行的约束系统」。基础层是硬约束，修饰层是软插件。
 
 ## Files
 
-- `Lesong Art：Simcise 设计规范.md` — 完整设计规范（1700 行），包含视觉/交互/组件/布局/品牌/无障碍全章节
-- `Display.html` — 产品级展示页（AI 参考 + 设计预览），21 个章节，Light/Dark 主题
-- `README.md` — 项目说明 + 设计语言参考表
-- `SKILL.md` — 本文件，AI Skill 调用入口
+| 文件 | 用途 |
+|---|---|
+| `Lesong Art：Simcise 设计规范.md` | 完整规范 ~1700 行（深入查阅时用） |
+| `Display.html` | 产品级展示页 21 章节（视觉参考时用） |
+| `tokens.json` | 机器可读 Token（代码生成时用） |
+| `SKILL.md` | 本文件，AI 调用入口（**首选参考**） |
 
 ## Reference
 
 ```
-规范文档: Lesong Art：Simcise 设计规范.md
-展示页面: Display.html
-版本: v2.3
+版本: v3.0
+架构: Foundation (MUST) + Enhancement (OPTIONAL)
 仓库: https://github.com/longqiyua/Simcise
 ```

@@ -4,6 +4,22 @@ All notable changes to the Simcise Design System are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0] — 2026-08-16
+
+### Changed
+- **Architecture overhaul** — Dual-layer system: Foundation (MUST) + Enhancement (OPTIONAL)
+- SKILL.md completely restructured: Foundation contains core tokens + hard constraints (~120 lines), Enhancement contains 8 optional modules (E1-E8) each with "when to use / when not to use" guidance
+- tokens.json updated with `$layer` markers on every token group
+- Enhancement modules now have `$module` tags (E1 Breathing, E2 Ceramic, E3 Light, E4 Morph, E5 Toggle, E6 Cursor, E7 Spinner, E8 Glass)
+
+### Added
+- **Vibe Coding Checklist** — 8-point quick checklist for AI code generation
+- **Enhancement module guidance** — Each module now includes "when to use" and "when NOT to use" conditions
+- Enhancement tokens section in tokens.json with breathing, ceramic, light awareness, dynamic cursor parameters
+
+### Why
+Previous versions treated all rules as equally important. v3.0 separates the "DNA" (Foundation — if you only follow this, output is already Simcise) from the "polish" (Enhancement — optional modules that add character). This makes the system actually usable for vibe coding: AI reads Foundation first, Enhancement only when the product calls for it.
+
 ## [2.3.0] — 2026-08-16
 
 ### Added
