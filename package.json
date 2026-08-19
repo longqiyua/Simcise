@@ -1,0 +1,16 @@
+{
+  "name": "simcise-design-system",
+  "private": true,
+  "simciseVersion": "V1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-tokens.mjs",
+    "check:tokens": "node scripts/build-tokens.mjs --check",
+    "validate": "node scripts/validate.mjs"
+  },
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./components.css": "./components.css",
+    "./tokens.json": "./tokens.json"
+  }
+}

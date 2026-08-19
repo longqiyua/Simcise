@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simcise V1.0 · 通用 MVP</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../components.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    .demo-shell { width: min(calc(100% - var(--sim-sys-space-8)), 880px); margin: 0 auto; padding: var(--sim-sys-space-8) 0 var(--sim-sys-space-12); }
+    .demo-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sim-sys-space-4); margin-bottom: var(--sim-sys-space-8); }
+    .demo-title { margin: 0; font-size: 28px; line-height: 1.2; }
+    .demo-copy { margin: var(--sim-sys-space-2) 0 0; color: var(--sim-sys-text-secondary); }
+    .demo-skeleton-short { width: 70%; }
+    .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sim-sys-space-4); }
+    .demo-span { grid-column: 1 / -1; }
+    h2 { margin: 0 0 var(--sim-sys-space-4); font-size: var(--sim-sys-font-size-lg); }
+    p { margin: 0; }
+    @media (max-width: 680px) {
+      .demo-shell { width: min(calc(100% - var(--sim-sys-space-6)), 880px); padding-top: var(--sim-sys-space-6); }
+      .demo-header { flex-direction: column; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .demo-span { grid-column: auto; }
+    }
+  </style>
+</head>
+<body class="sim-root">
+  <main class="demo-shell">
+    <header class="demo-header">
+      <div>
+        <span class="sim-badge">V1.0 · 通用 MVP</span>
+        <h1 class="demo-title">Simcise components</h1>
+        <p class="demo-copy">Token 驱动、无框架依赖、Light/Dark 与键盘路径完整。</p>
+      </div>
+      <button class="sim-button sim-button--secondary" id="themeToggle" type="button" aria-pressed="false">切换深色</button>
+    </header>
+
+    <div class="demo-grid">
+      <section class="sim-card">
+        <h2>Actions</h2>
+        <div class="sim-cluster">
+          <button class="sim-button sim-button--primary" type="button">保存更改</button>
+          <button class="sim-button sim-button--secondary" type="button">稍后处理</button>
+          <button class="sim-button sim-button--ghost" type="button">取消</button>
+          <button class="sim-button sim-button--primary" type="button" disabled>不可用</button>
+        </div>
+      </section>
+
+      <section class="sim-card">
+        <h2>Field</h2>
+        <div class="sim-field">
+          <label class="sim-label" for="projectName">项目名称</label>
+          <input class="sim-input" id="projectName" name="projectName" value="Simcise MVP" aria-describedby="projectHint">
+          <span class="sim-hint" id="projectHint">使用用户能识别的名称。</span>
+        </div>
+      </section>
+
+      <section class="sim-card demo-span">
+        <h2>Semantic feedback</h2>
+        <div class="sim-stack">
+          <div class="sim-alert sim-alert--success" role="status">配置已保存，可以继续下一步。</div>
+          <div class="sim-alert sim-alert--warning" role="status">还有 2 个字段需要检查。</div>
+          <div class="sim-alert sim-alert--danger" role="alert">无法保存：项目名称已经存在。</div>
+        </div>
+      </section>
+
+      <details class="sim-disclosure demo-span">
+        <summary>高级设置 <span aria-hidden="true">＋</span></summary>
+        <div class="sim-disclosure__content">
+          常规设置原地展开。只有权限、数据丢失或不可逆操作才使用模态确认。
+        </div>
+      </details>
+
+      <section class="sim-card">
+        <h2>Loading</h2>
+        <div class="sim-stack" role="status" aria-label="正在加载内容">
+          <div class="sim-skeleton"></div>
+          <div class="sim-skeleton demo-skeleton-short"></div>
+        </div>
+      </section>
+
+      <section class="sim-card">
+        <h2>Destructive action</h2>
+        <div class="sim-stack">
+          <p class="demo-copy">危险色只表达真实破坏性结果。</p>
+          <div><button class="sim-button sim-button--danger" type="button">永久删除项目</button></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const toggle = document.querySelector('#themeToggle');
+    toggle.addEventListener('click', () => {
+      const dark = document.documentElement.dataset.theme !== 'dark';
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.textContent = dark ? '切换浅色' : '切换深色';
+    });
+  </script>
+</body>
+</html>

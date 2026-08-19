@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simcise Design"
+  short_description: "Build calm vanilla HTML, CSS, and JS interfaces"
+  default_prompt: "Use $simcise-design to build an accessible, responsive interface with pure HTML, CSS, and vanilla JavaScript."

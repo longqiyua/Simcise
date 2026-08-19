@@ -1,0 +1,239 @@
+/* Generated from tokens.json by scripts/build-tokens.mjs. Do not edit.
+ * Simcise V1.0 · mvp
+ */
+
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --sim-ref-color-neutral-0: #FFFFFF;
+  --sim-ref-color-neutral-25: #FAFAF8;
+  --sim-ref-color-neutral-50: #F5F5F0;
+  --sim-ref-color-neutral-100: #EEEBE6;
+  --sim-ref-color-neutral-200: #E5E5E5;
+  --sim-ref-color-neutral-400: #B8B8B8;
+  --sim-ref-color-neutral-500: #707070;
+  --sim-ref-color-neutral-600: #666666;
+  --sim-ref-color-neutral-700: #2D2D2D;
+  --sim-ref-color-neutral-900: #1A1A1A;
+  --sim-ref-color-accent-50: #E8F0EF;
+  --sim-ref-color-accent-100: #C5DDD9;
+  --sim-ref-color-accent-200: #8FBFB8;
+  --sim-ref-color-accent-300: #5A9E96;
+  --sim-ref-color-accent-400: #3D857E;
+  --sim-ref-color-accent-500: #1A6B66;
+  --sim-ref-color-accent-600: #145551;
+  --sim-ref-color-accent-700: #0E3F3C;
+  --sim-ref-color-accent-dark: #58AAA1;
+  --sim-ref-color-accent-dark-hover: #73BBB3;
+  --sim-ref-color-semantic-danger-light: #B73A3A;
+  --sim-ref-color-semantic-danger-dark: #FF9A9A;
+  --sim-ref-color-semantic-success-light: #047857;
+  --sim-ref-color-semantic-success-dark: #58C99A;
+  --sim-ref-color-semantic-warning-light: #A15C00;
+  --sim-ref-color-semantic-warning-dark: #F5BD67;
+  --sim-ref-color-semantic-info-light: #2563EB;
+  --sim-ref-color-semantic-info-dark: #7DB2FF;
+  --sim-ref-color-dark-canvas: #16171A;
+  --sim-ref-color-dark-surface: #1C1D21;
+  --sim-ref-color-dark-muted: #24262B;
+  --sim-ref-color-dark-text: #DDE3EB;
+  --sim-ref-color-dark-text-secondary: #AEB5BF;
+  --sim-ref-color-dark-text-muted: #9AA3AE;
+  --sim-ref-color-route-light-canvas: #EFEEEC;
+  --sim-ref-color-route-light-surface: #E7E6E3;
+  --sim-ref-color-route-light-muted: #DDDCD8;
+  --sim-ref-color-route-light-border: #D0CEC8;
+  --sim-ref-color-route-accent: #8479D2;
+  --sim-ref-color-route-accent-hover: #6B5FC8;
+  --sim-ref-color-route-accent-soft: #E8E5F0;
+  --sim-ref-color-route-dark-canvas: #141519;
+  --sim-ref-color-route-dark-surface: #181A1F;
+  --sim-ref-color-route-dark-muted: #1C1E24;
+  --sim-ref-color-route-dark-border: #34373F;
+  --sim-ref-color-route-dark-accent: #B4AEEA;
+  --sim-ref-color-yuich-light-canvas: #FAF8F5;
+  --sim-ref-color-yuich-light-surface: #FFFFFF;
+  --sim-ref-color-yuich-light-muted: #EEEAE4;
+  --sim-ref-color-yuich-light-border: #DCD5CC;
+  --sim-ref-color-yuich-accent: #3A925F;
+  --sim-ref-color-yuich-accent-hover: #2E754B;
+  --sim-ref-color-yuich-accent-soft: #E3F0E8;
+  --sim-ref-color-yuich-dark-canvas: #0D0D0D;
+  --sim-ref-color-yuich-dark-surface: #1A1A1A;
+  --sim-ref-color-yuich-dark-muted: #252525;
+  --sim-ref-color-yuich-dark-border: #454545;
+  --sim-ref-color-yuich-dark-accent: #69C489;
+  --sim-ref-space-1: 4px;
+  --sim-ref-space-2: 8px;
+  --sim-ref-space-3: 12px;
+  --sim-ref-space-4: 16px;
+  --sim-ref-space-6: 24px;
+  --sim-ref-space-8: 32px;
+  --sim-ref-space-12: 48px;
+  --sim-ref-radius-control: 10px;
+  --sim-ref-radius-action: 12px;
+  --sim-ref-radius-container: 14px;
+  --sim-ref-radius-pill: 999px;
+  --sim-ref-shadow-air: 0 1px 3px rgb(26 26 26 / 4%), 0 6px 20px -8px rgb(26 26 26 / 5%);
+  --sim-ref-shadow-lift: 0 2px 6px rgb(26 26 26 / 5%), 0 14px 36px -14px rgb(26 26 26 / 10%);
+  --sim-ref-shadow-air-dark: 0 1px 3px rgb(0 0 0 / 22%), 0 6px 20px -8px rgb(0 0 0 / 28%);
+  --sim-ref-shadow-lift-dark: 0 2px 6px rgb(0 0 0 / 26%), 0 14px 36px -14px rgb(0 0 0 / 42%);
+  --sim-ref-motion-duration-micro: 150ms;
+  --sim-ref-motion-duration-enter: 200ms;
+  --sim-ref-motion-duration-panel: 300ms;
+  --sim-ref-motion-duration-morph: 400ms;
+  --sim-ref-motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --sim-ref-motion-ease-enter: cubic-bezier(0.22, 0.95, 0.35, 1);
+  --sim-ref-size-target-compact: 36px;
+  --sim-ref-size-target-touch: 44px;
+  --sim-ref-font-ui: 'Nunito', 'Noto Sans SC', system-ui, sans-serif;
+  --sim-ref-font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --sim-ref-font-size-sm: 12px;
+  --sim-ref-font-size-base: 14px;
+  --sim-ref-font-size-lg: 16px;
+  --sim-ref-font-line-height: 1.6;
+  --sim-sys-bg-canvas: var(--sim-ref-color-neutral-25);
+  --sim-sys-bg-subtle: var(--sim-ref-color-neutral-50);
+  --sim-sys-bg-muted: var(--sim-ref-color-neutral-100);
+  --sim-sys-bg-surface: var(--sim-ref-color-neutral-0);
+  --sim-sys-text-primary: var(--sim-ref-color-neutral-900);
+  --sim-sys-text-secondary: var(--sim-ref-color-neutral-600);
+  --sim-sys-text-muted: var(--sim-ref-color-neutral-500);
+  --sim-sys-border-default: var(--sim-ref-color-neutral-200);
+  --sim-sys-border-strong: var(--sim-ref-color-neutral-400);
+  --sim-sys-accent: var(--sim-ref-color-accent-500);
+  --sim-sys-accent-hover: var(--sim-ref-color-accent-600);
+  --sim-sys-accent-soft: var(--sim-ref-color-accent-50);
+  --sim-sys-on-accent: var(--sim-ref-color-neutral-0);
+  --sim-sys-danger: var(--sim-ref-color-semantic-danger-light);
+  --sim-sys-on-danger: var(--sim-ref-color-neutral-0);
+  --sim-sys-success: var(--sim-ref-color-semantic-success-light);
+  --sim-sys-warning: var(--sim-ref-color-semantic-warning-light);
+  --sim-sys-info: var(--sim-ref-color-semantic-info-light);
+  --sim-sys-shadow-air: var(--sim-ref-shadow-air);
+  --sim-sys-shadow-lift: var(--sim-ref-shadow-lift);
+  --sim-sys-font-ui: var(--sim-ref-font-ui);
+  --sim-sys-font-mono: var(--sim-ref-font-mono);
+  --sim-sys-font-size-sm: var(--sim-ref-font-size-sm);
+  --sim-sys-font-size-base: var(--sim-ref-font-size-base);
+  --sim-sys-font-size-lg: var(--sim-ref-font-size-lg);
+  --sim-sys-line-height: var(--sim-ref-font-line-height);
+  --sim-sys-space-1: var(--sim-ref-space-1);
+  --sim-sys-space-2: var(--sim-ref-space-2);
+  --sim-sys-space-3: var(--sim-ref-space-3);
+  --sim-sys-space-4: var(--sim-ref-space-4);
+  --sim-sys-space-6: var(--sim-ref-space-6);
+  --sim-sys-space-8: var(--sim-ref-space-8);
+  --sim-sys-space-12: var(--sim-ref-space-12);
+  --sim-sys-radius-control: var(--sim-ref-radius-control);
+  --sim-sys-radius-action: var(--sim-ref-radius-action);
+  --sim-sys-radius-container: var(--sim-ref-radius-container);
+  --sim-sys-target-compact: var(--sim-ref-size-target-compact);
+  --sim-sys-target-touch: var(--sim-ref-size-target-touch);
+  --sim-sys-duration-micro: var(--sim-ref-motion-duration-micro);
+  --sim-sys-duration-enter: var(--sim-ref-motion-duration-enter);
+  --sim-sys-duration-panel: var(--sim-ref-motion-duration-panel);
+  --sim-sys-ease-standard: var(--sim-ref-motion-ease-standard);
+  --sim-sys-ease-enter: var(--sim-ref-motion-ease-enter);
+  --sim-comp-button-primary-bg: var(--sim-sys-accent);
+  --sim-comp-button-primary-bg-hover: var(--sim-sys-accent-hover);
+  --sim-comp-button-primary-text: var(--sim-sys-on-accent);
+  --sim-comp-input-bg: var(--sim-sys-bg-surface);
+  --sim-comp-input-border: var(--sim-sys-border-default);
+  --sim-comp-input-border-hover: var(--sim-sys-border-strong);
+  --sim-comp-input-border-focus: var(--sim-sys-accent);
+  --sim-comp-card-bg: var(--sim-sys-bg-surface);
+  --sim-comp-card-border: var(--sim-sys-border-default);
+  --sim-comp-card-shadow: var(--sim-sys-shadow-air);
+  --sim-comp-card-shadow-hover: var(--sim-sys-shadow-lift);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --sim-sys-bg-canvas: var(--sim-ref-color-dark-canvas);
+  --sim-sys-bg-subtle: var(--sim-ref-color-dark-surface);
+  --sim-sys-bg-muted: var(--sim-ref-color-dark-muted);
+  --sim-sys-bg-surface: var(--sim-ref-color-dark-surface);
+  --sim-sys-text-primary: var(--sim-ref-color-dark-text);
+  --sim-sys-text-secondary: var(--sim-ref-color-dark-text-secondary);
+  --sim-sys-text-muted: var(--sim-ref-color-dark-text-muted);
+  --sim-sys-border-default: rgb(255 255 255 / 12%);
+  --sim-sys-border-strong: rgb(255 255 255 / 24%);
+  --sim-sys-accent: var(--sim-ref-color-accent-dark);
+  --sim-sys-accent-hover: var(--sim-ref-color-accent-dark-hover);
+  --sim-sys-accent-soft: #193B38;
+  --sim-sys-on-accent: #102321;
+  --sim-sys-danger: var(--sim-ref-color-semantic-danger-dark);
+  --sim-sys-on-danger: #2A1010;
+  --sim-sys-success: var(--sim-ref-color-semantic-success-dark);
+  --sim-sys-warning: var(--sim-ref-color-semantic-warning-dark);
+  --sim-sys-info: var(--sim-ref-color-semantic-info-dark);
+  --sim-sys-shadow-air: var(--sim-ref-shadow-air-dark);
+  --sim-sys-shadow-lift: var(--sim-ref-shadow-lift-dark);
+}
+
+[data-simcise-product="route"] {
+  --sim-sys-bg-canvas: var(--sim-ref-color-route-light-canvas);
+  --sim-sys-bg-subtle: var(--sim-ref-color-route-light-surface);
+  --sim-sys-bg-muted: var(--sim-ref-color-route-light-muted);
+  --sim-sys-bg-surface: var(--sim-ref-color-route-light-surface);
+  --sim-sys-text-muted: #666666;
+  --sim-sys-border-default: var(--sim-ref-color-route-light-border);
+  --sim-sys-accent: var(--sim-ref-color-route-accent);
+  --sim-sys-accent-hover: var(--sim-ref-color-route-accent-hover);
+  --sim-sys-accent-soft: var(--sim-ref-color-route-accent-soft);
+  --sim-sys-on-accent: #171520;
+  --sim-sys-shadow-air: none;
+  --sim-sys-shadow-lift: none;
+}
+
+[data-simcise-product="route"][data-theme="dark"] {
+  --sim-sys-bg-canvas: var(--sim-ref-color-route-dark-canvas);
+  --sim-sys-bg-subtle: var(--sim-ref-color-route-dark-surface);
+  --sim-sys-bg-muted: var(--sim-ref-color-route-dark-muted);
+  --sim-sys-bg-surface: var(--sim-ref-color-route-dark-surface);
+  --sim-sys-text-muted: #A7A7A7;
+  --sim-sys-border-default: var(--sim-ref-color-route-dark-border);
+  --sim-sys-accent: var(--sim-ref-color-route-dark-accent);
+  --sim-sys-accent-hover: #CCC6F0;
+  --sim-sys-accent-soft: #2B293C;
+  --sim-sys-on-accent: #181621;
+}
+
+[data-simcise-product="yuich"] {
+  --sim-sys-bg-canvas: var(--sim-ref-color-yuich-light-canvas);
+  --sim-sys-bg-subtle: #F5F5F0;
+  --sim-sys-bg-muted: var(--sim-ref-color-yuich-light-muted);
+  --sim-sys-bg-surface: var(--sim-ref-color-yuich-light-surface);
+  --sim-sys-border-default: var(--sim-ref-color-yuich-light-border);
+  --sim-sys-accent: var(--sim-ref-color-yuich-accent);
+  --sim-sys-accent-hover: var(--sim-ref-color-yuich-accent-hover);
+  --sim-sys-accent-soft: var(--sim-ref-color-yuich-accent-soft);
+  --sim-sys-on-accent: #08170F;
+}
+
+[data-simcise-product="yuich"][data-theme="dark"] {
+  --sim-sys-bg-canvas: var(--sim-ref-color-yuich-dark-canvas);
+  --sim-sys-bg-subtle: var(--sim-ref-color-yuich-dark-surface);
+  --sim-sys-bg-muted: var(--sim-ref-color-yuich-dark-muted);
+  --sim-sys-bg-surface: var(--sim-ref-color-yuich-dark-surface);
+  --sim-sys-border-default: var(--sim-ref-color-yuich-dark-border);
+  --sim-sys-accent: var(--sim-ref-color-yuich-dark-accent);
+  --sim-sys-accent-hover: #82D09D;
+  --sim-sys-accent-soft: #183325;
+  --sim-sys-on-accent: #102218;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sim-sys-duration-micro: 1ms;
+    --sim-sys-duration-enter: 1ms;
+    --sim-sys-duration-panel: 1ms;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --sim-sys-border-default: var(--sim-sys-text-secondary);
+    --sim-sys-border-strong: var(--sim-sys-text-primary);
+  }
+}

@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simcise Design System · Display</title>
+<title>Simcise Design System · V1.0</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="tokens.css">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
-   SIMCISE DESIGN TOKENS · AI Reference v3.2
-   Simcise · Simplex × Concise · 2026.08.16
+   SIMCISE DESIGN TOKENS · AI Reference V1.0
+   Simcise · Simplex × Concise · 2026.08.19
    ═══════════════════════════════════════════════════ */
 
 :root, [data-theme="light"] {
   --bg: #FAFAF8; --bg-secondary: #F5F5F0; --bg-tertiary: #EEEBE6;
   --surface: #FFFFFF; --surface-alt: #F4F4F5;
   --border: #E5E5E5; --border-warm: #D8D6D0; --border-strong: #D4D4D8;
-  --text: #1A1A1A; --text-secondary: #666666; --text-muted: #999999; --text-faint: #AAAAAA;
+  --text: #1A1A1A; --text-secondary: #666666; --text-muted: #707070; --text-faint: #767676;
   /* Accent Family: Shore "Deep Sea Teal" — one hue, 7 steps */
   --accent-50: #E8F0EF; --accent-100: #C5DDD9; --accent-200: #8FBFB8;
   --accent-300: #5A9E96; --accent-400: #3D857E;
   --accent: #1A6B66; --accent-600: #145551; --accent-700: #0E3F3C;
   --accent-hover: #15766F;
   --accent-soft: rgba(26,107,102,0.08); --accent-glow: rgba(26,107,102,0.25);
-  --danger: #D94F4F; --danger-soft: rgba(217,79,79,0.08);
-  --success: #059669; --warning: #F59E0B; --info: #3B82F6;
+  --danger: #B73A3A; --danger-soft: rgba(183,58,58,0.10); --on-danger: #FFFFFF;
+  --success: #047857; --warning: #A15C00; --info: #2563EB; --on-accent: #FFFFFF;
   --shadow-air: 0 1px 3px rgba(26,26,26,0.04), 0 6px 20px -8px rgba(26,26,26,0.05);   /* 空气感：轻径向，仅实体感 */
   --shadow-lift: 0 2px 6px rgba(26,26,26,0.05), 0 14px 36px -14px rgba(26,26,26,0.10); /* hover 浮起：呼吸感 */
   --inverse: #1A1A1A; --inverse-text: #FAFAF8;  /* 主题反色：关闭按钮专用，非红色 */
@@ -39,22 +41,24 @@
   --bg: #16171A; --bg-secondary: #1C1D21; --bg-tertiary: #24262B;
   --surface: #1C1D21; --surface-alt: #24262B;
   --border: rgba(255,255,255,0.08); --border-warm: rgba(255,255,255,0.10); --border-strong: rgba(255,255,255,0.14);
-  --text: #DDE3EB; --text-secondary: #888888; --text-muted: #555555; --text-faint: #6A7280;
+  --text: #DDE3EB; --text-secondary: #AEB5BF; --text-muted: #9AA3AE; --text-faint: #89929E;
   --accent-50: #1A2E2C; --accent-100: #1E3A37; --accent-200: #2A5C56;
   --accent-300: #3D857E; --accent-400: #5A9E96;
-  --accent: #2A8D84; --accent-600: #349E96; --accent-700: #5ABFB6;
-  --accent-hover: #349E96;
+  --accent: #58AAA1; --accent-600: #73BBB3; --accent-700: #8DCBC4;
+  --accent-hover: #73BBB3; --on-accent: #102321;
   --accent-soft: rgba(42,141,132,0.12); --accent-glow: rgba(42,141,132,0.30);
   --shadow-air: 0 1px 3px rgba(0,0,0,0.22), 0 6px 20px -8px rgba(0,0,0,0.28);
   --shadow-lift: 0 2px 6px rgba(0,0,0,0.26), 0 14px 36px -14px rgba(0,0,0,0.42);
   --inverse: #DDE3EB; --inverse-text: #16171A;
+  --danger: #FF9A9A; --danger-soft: rgba(255,154,154,0.14); --on-danger: #2A1010;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 13px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { font-family: var(--font-latin), var(--font-cjk); background: var(--bg); color: var(--text); transition: background 300ms var(--ease-main), color 300ms var(--ease-main); scrollbar-width: none; user-select: none; -webkit-user-select: none; }
+body { font-family: 'Nunito', -apple-system, var(--font-cjk); background: var(--bg); color: var(--text); transition: background 300ms var(--ease-main), color 300ms var(--ease-main); scrollbar-width: none; }
 body::-webkit-scrollbar { display: none; }
 ::selection { background: var(--accent); color: white; }
+button, .nav-item, .topbar { user-select: none; -webkit-user-select: none; }
 
 .display-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 40px 140px; }
 
@@ -63,12 +67,14 @@ body::-webkit-scrollbar { display: none; }
 .topbar h1 { font-family: var(--font-display); font-weight: 600; font-size: 24px; letter-spacing: -0.5px; }
 .topbar h1 span { color: var(--accent); }
 .topbar-meta { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); margin-top: 2px; }
+.topbar-actions { display: flex; align-items: center; gap: 20px; }
+.topbar-hint { margin-top: -52px; margin-bottom: 48px; font-size: 11px; color: var(--text-faint); }
 
 /* Theme Switcher — rounded rect buttons */
 .theme-switcher { display: flex; gap: 6px; }
 .theme-btn { padding: 7px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary); font-family: var(--font-latin); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 200ms var(--ease-main); }
 .theme-btn:hover { border-color: var(--border-strong); color: var(--text); }
-.theme-btn.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 0 16px var(--accent-glow); }
+.theme-btn.active { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 0 16px var(--accent-glow); }
 
 /* Window Controls — hover 才显示，移开隐藏 · 关闭用主题反色非红色 · 按钮要够大 */
 .win-controls { display: flex; gap: 6px; opacity: 0; transform: translateY(-2px); transition: opacity 250ms var(--ease-main), transform 250ms var(--ease-main); }
@@ -76,6 +82,7 @@ body::-webkit-scrollbar { display: none; }
 .win-btn { width: 36px; height: 36px; border-radius: 10px; border: none; background: transparent; color: var(--text-muted); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--font-latin); transition: all 150ms var(--ease-main); }
 .win-btn:hover { background: var(--bg-tertiary); color: var(--text); }
 .win-btn.close:hover { background: var(--inverse); color: var(--inverse-text); }
+@media (hover: none), (pointer: coarse) { .win-controls { opacity: 1; transform: none; } .win-btn, .theme-btn, .toggle-btn { min-width: 44px; min-height: 44px; } }
 
 /* Section */
 .section { margin-bottom: 96px; }
@@ -101,24 +108,18 @@ body::-webkit-scrollbar { display: none; }
 .color-info .name { font-size: 11px; font-weight: 600; margin-bottom: 1px; }
 .color-info .token { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); }
 
-/* Typography */
-.type-row { display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
-.type-row:last-child { border-bottom: none; }
-.type-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); min-width: 80px; text-transform: uppercase; letter-spacing: 0.5px; }
-.type-sample { flex: 1; }
-
 /* Buttons — Bank-card shaped */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 28px; border-radius: 12px; font-family: var(--font-latin); font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: all 150ms var(--ease-main); white-space: nowrap; user-select: none; letter-spacing: 0.2px; }
 .btn:active { transform: scale(0.97); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-.btn-primary { background: var(--accent); color: white; border-color: var(--accent-600); }
+.btn-primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent-600); }
 .btn-primary:hover { background: var(--accent-hover); box-shadow: 0 4px 16px var(--accent-glow); }
 .btn-secondary { background: transparent; border-color: var(--border-strong); color: var(--text); }
 .btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--accent-300); color: var(--accent-700); }
 .btn-ghost { background: transparent; color: var(--text-secondary); border-color: transparent; }
 .btn-ghost:hover { background: var(--bg-tertiary); color: var(--text); }
-.btn-danger { background: var(--danger); color: white; border-color: #C44545; }
-.btn-danger:hover { background: #C44545; box-shadow: 0 4px 16px rgba(217,79,79,0.25); }
+.btn-danger { background: var(--danger); color: var(--on-danger); border-color: var(--danger); }
+.btn-danger:hover { filter: brightness(0.9); box-shadow: 0 4px 16px var(--danger-soft); }
 .btn-sm { padding: 7px 18px; font-size: 12px; border-radius: 10px; }
 .btn-lg { padding: 14px 36px; font-size: 14px; border-radius: 14px; }
 
@@ -144,12 +145,12 @@ body::-webkit-scrollbar { display: none; }
 .toggle-btn { position: relative; min-width: 52px; height: 30px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--bg-tertiary); color: var(--text-muted); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 250ms var(--ease-main); display: flex; align-items: center; justify-content: center; overflow: visible; user-select: none; }
 .toggle-btn .toggle-label { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.5px; opacity: 0; transition: opacity 200ms var(--ease-main); pointer-events: none; white-space: nowrap; }
 .toggle-btn.off { background: var(--bg-tertiary); border-color: var(--border); color: var(--text-muted); box-shadow: none; }
-.toggle-btn.on { background: var(--accent); border-color: var(--accent-600); color: white; box-shadow: 0 0 20px var(--accent-glow), 0 0 4px var(--accent-glow); }
+.toggle-btn.on { background: var(--accent); border-color: var(--accent-600); color: var(--on-accent); box-shadow: 0 0 20px var(--accent-glow), 0 0 4px var(--accent-glow); }
 .toggle-btn.show-label .toggle-label { opacity: 1; }
 .toggle-btn .toggle-label { transition: opacity 500ms ease; }
 
 /* Cards */
-.card { border-radius: 16px; border: 1px solid var(--border); background: var(--surface); padding: 24px; transition: all 200ms var(--ease-main); }
+.card { border-radius: 14px; border: 1px solid var(--border); background: var(--surface); padding: 24px; transition: all 200ms var(--ease-main); }
 .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: var(--accent-200); }
 .card-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .card-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
@@ -188,19 +189,32 @@ body::-webkit-scrollbar { display: none; }
 .nav-demo { display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 8px; width: 200px; }
 .nav-item { padding: 9px 12px; border-radius: 10px; font-size: 13px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 200ms var(--ease-main); display: flex; align-items: center; gap: 8px; }
 .nav-item:hover { background: var(--bg-tertiary); color: var(--text); transform: translateX(4px); }
-.nav-item.active { background: var(--accent); color: white; box-shadow: 0 6px 14px var(--accent-glow); }
+.nav-item.active { background: var(--accent); color: var(--on-accent); box-shadow: 0 6px 14px var(--accent-glow); }
 .nav-item .icon { font-size: 14px; width: 18px; text-align: center; }
 
-/* Orbit Spinner — ball pushed on circular track, fast-slow alternating */
-.orbit-spinner { width: 40px; height: 40px; position: relative; }
-.orbit-track { width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--border); position: relative; }
-.orbit-ball { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); top: -5px; left: 50%; margin-left: -5px; transform-origin: 5px 25px; animation: orbitPush 2.4s infinite; box-shadow: 0 0 6px var(--accent-glow); }
-@keyframes orbitPush {
-  0%   { transform: rotate(0deg);    animation-timing-function: cubic-bezier(0.05, 0.7, 0.1, 1.0); }
-  25%  { transform: rotate(90deg);   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-  50%  { transform: rotate(180deg);  animation-timing-function: cubic-bezier(0.05, 0.7, 0.1, 1.0); }
-  75%  { transform: rotate(270deg);  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-  100% { transform: rotate(360deg); }
+/* Inertial Spinner — concentric rings accelerate and coast independently */
+.orbit-spinner { width: 40px; height: 40px; position: relative; color: var(--accent); }
+.orbit-track,
+.orbit-ball {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, currentColor 16%, transparent);
+  border-top-color: currentColor;
+  border-right-color: color-mix(in srgb, currentColor 58%, transparent);
+}
+.orbit-track { inset: 0; animation: inertialOuter 2.4s infinite; }
+.orbit-ball { inset: 9px; animation: inertialInner 1.7s infinite; }
+@keyframes inertialOuter {
+  0%   { transform: rotate(0deg); animation-timing-function: cubic-bezier(.18,.72,.22,1); }
+  38%  { transform: rotate(250deg); animation-timing-function: cubic-bezier(.55,0,.82,.28); }
+  56%  { transform: rotate(310deg); animation-timing-function: cubic-bezier(.18,.72,.22,1); }
+  100% { transform: rotate(720deg); }
+}
+@keyframes inertialInner {
+  0%   { transform: rotate(0deg); animation-timing-function: cubic-bezier(.18,.72,.22,1); }
+  42%  { transform: rotate(-210deg); animation-timing-function: cubic-bezier(.55,0,.82,.28); }
+  62%  { transform: rotate(-260deg); animation-timing-function: cubic-bezier(.18,.72,.22,1); }
+  100% { transform: rotate(-720deg); }
 }
 
 /* Skeleton */
@@ -211,7 +225,24 @@ body::-webkit-scrollbar { display: none; }
 .ease-track { height: 6px; background: var(--bg-tertiary); border-radius: 3px; overflow: hidden; border: 1px solid var(--border); }
 .ease-ball { height: 100%; width: 30px; border-radius: 3px; cursor: pointer; }
 
-@media (max-width: 760px) { .grid-2, .grid-3, .grid-4, .grid-7 { grid-template-columns: 1fr; } .display-wrap { padding: 16px 16px 60px; } }
+@media (max-width: 760px) {
+  html { font-size: 14px; }
+  body { overflow-x: hidden; }
+  .grid-2, .grid-3, .grid-4, .grid-7, .philo-banner { grid-template-columns: 1fr; }
+  .display-wrap { padding: 16px 16px 60px; }
+  .topbar { align-items: flex-start; gap: 20px; padding: 16px 0 24px; margin-bottom: 20px; }
+  .topbar h1 { font-size: 22px; white-space: nowrap; }
+  .topbar-meta { max-width: 180px; line-height: 1.5; }
+  .topbar-actions { gap: 8px; }
+  .win-controls { opacity: 1; transform: none; gap: 2px; }
+  .win-btn { width: 44px; height: 44px; }
+  .theme-btn { min-height: 44px; padding-inline: 14px; }
+  .topbar-hint { margin: 0 0 36px; line-height: 1.7; }
+  .philo-banner { gap: 12px; margin-bottom: 56px; }
+  .philo-item { padding: 18px; }
+  .layer-divider { margin: 64px 0 48px; }
+  .section { margin-bottom: 72px; }
+}
 
 /* Philosophy Banner */
 .philo-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 72px; }
@@ -221,21 +252,22 @@ body::-webkit-scrollbar { display: none; }
 
 /* Breathing */
 @keyframes breathShadow { 0%,100% { box-shadow: 0 4px 20px rgba(0,0,0,0.04); } 50% { box-shadow: 0 4px 28px var(--accent-glow); } }
-.breath-card { border-radius: 16px; border: 1px solid var(--border); background: var(--surface); padding: 36px; text-align: center; animation: breathShadow 4s ease-in-out infinite; transition: border-color 600ms var(--ease-main); }
+.breath-card { border-radius: 14px; border: 1px solid var(--border); background: var(--surface); padding: 36px; text-align: center; animation: breathShadow 4s ease-in-out infinite; transition: border-color 600ms var(--ease-main); }
 
 /* Morphing FAB */
-.morph-fab { width: 48px; height: 48px; border-radius: 14px; border: 1px solid var(--accent-600); background: var(--accent); color: white; cursor: pointer; position: relative; transition: all 300ms var(--ease-main); box-shadow: 0 4px 16px var(--accent-glow); }
+.morph-fab { width: 48px; height: 48px; border-radius: 14px; border: 1px solid var(--accent-600); background: var(--accent); color: var(--on-accent); cursor: pointer; position: relative; transition: all 300ms var(--ease-main); box-shadow: 0 4px 16px var(--accent-glow); }
 .morph-fab:hover { transform: scale(1.06); box-shadow: 0 6px 24px var(--accent-glow); }
 .morph-fab:active { transform: scale(0.95); }
-.morph-fab .plus-line { position: absolute; top: 50%; left: 50%; width: 20px; height: 2px; background: white; border-radius: 1px; pointer-events: none; }
+.morph-fab .plus-line { position: absolute; top: 50%; left: 50%; width: 20px; height: 2px; background: currentColor; border-radius: 1px; pointer-events: none; }
 .morph-fab .plus-h { transform: translate(-50%, -50%); transition: opacity 200ms var(--ease-main), width 200ms var(--ease-main); }
 .morph-fab .plus-v { transform: translate(-50%, -50%) rotate(90deg); transition: transform 300ms var(--ease-bounce); }
-.morph-fab.active { border-radius: 12px; background: var(--danger); border-color: #C44545; box-shadow: 0 4px 16px rgba(217,79,79,0.3); }
+.morph-fab.active { border-radius: 12px; background: var(--danger); color: var(--on-danger); border-color: var(--danger); box-shadow: 0 4px 16px var(--danger-soft); }
 .morph-fab.active .plus-h { opacity: 0; width: 0; }
 .morph-fab.active .plus-v { transform: translate(-50%, -50%) rotate(135deg); }
 
 /* Card Expansion */
 .expand-card { cursor: pointer; }
+.expand-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
 .expand-hidden { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 400ms var(--ease-main), opacity 300ms var(--ease-main), margin 300ms var(--ease-main); margin-top: 0; }
 .expand-card.expanded .expand-hidden { max-height: 300px; opacity: 1; margin-top: 14px; }
 .expand-card.expanded { border-color: var(--accent-200); background: color-mix(in srgb, var(--accent) 2%, var(--surface)); }
@@ -243,7 +275,7 @@ body::-webkit-scrollbar { display: none; }
 .expand-card.expanded .expand-arrow { transform: rotate(45deg); }
 
 /* Ceramic */
-.ceramic-surface { border-radius: 16px; border: 1px solid var(--border-warm); background: linear-gradient(160deg, var(--surface) 0%, var(--bg-secondary) 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.7); padding: 24px; transition: all 300ms var(--ease-main); }
+.ceramic-surface { border-radius: 14px; border: 1px solid var(--border-warm); background: linear-gradient(160deg, var(--surface) 0%, var(--bg-secondary) 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.7); padding: 24px; transition: all 300ms var(--ease-main); }
 [data-theme="dark"] .ceramic-surface { box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.04); }
 .ceramic-surface:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7); }
 .ceramic-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 12px; border: 1px solid var(--border-warm); background: linear-gradient(160deg, var(--surface), var(--bg-secondary)); box-shadow: 0 1px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: all 200ms var(--ease-main); }
@@ -263,29 +295,43 @@ body::-webkit-scrollbar { display: none; }
 
 /* Enhancement section number — Outfit decorative */
 .section-title .num.e-num { color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-100); }
+/* Foundation iron-rule number — neutral, not enhancement */
+.section-title .num.core-num { color: var(--text-secondary); background: var(--surface-alt); border: 1px solid var(--border-strong); }
 
 /* Light Showcase */
 .light-zone { border-radius: 14px; padding: 24px; border: 1px solid var(--border); position: relative; overflow: hidden; }
 .light-zone::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.5) 0%, transparent 60%); pointer-events: none; }
 [data-theme="dark"] .light-zone::before { background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.03) 0%, transparent 60%); }
 
-/* Binary Star Spinner — two orbiting circles, overlap = accent light */
-.binary-spinner { width: 48px; height: 48px; position: relative; }
-.binary-spinner .orbit { position: absolute; inset: 0; animation: binaryRevolve 2.8s var(--ease-main) infinite; }
-.binary-spinner .orbit:nth-child(2) { animation-delay: -1.4s; }
-.binary-spinner .star {
-  position: absolute; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--accent-200);
-  top: 50%; left: 50%; margin: -10px 0 0 -10px;
-  mix-blend-mode: multiply;
+/* Inertial Dual Ring Spinner — outer and inner rings rotate independently */
+.binary-spinner { width: 48px; height: 48px; position: relative; color: var(--accent); }
+.binary-spinner .ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, currentColor 16%, transparent);
+  border-top-color: currentColor;
+  border-right-color: color-mix(in srgb, currentColor 58%, transparent);
 }
-[data-theme="dark"] .binary-spinner .star {
-  background: var(--accent-300);
-  mix-blend-mode: screen;
+.binary-spinner .ring-outer { inset: 0; animation: inertialOuter 2.4s infinite; }
+.binary-spinner .ring-inner { inset: 22%; animation: inertialInner 1.7s infinite; }
+
+/* Focus Visible — keyboard a11y ring (Section 30 promise) */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.input:focus-visible { outline: none; } /* inputs have their own focus ring */
+
+/* Reduced Motion — respect system preference (Section 30 promise) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
-@keyframes binaryRevolve {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@media (prefers-contrast: more) {
+  :root { --border: #777; --border-strong: #444; --text-muted: #666; }
+  [data-theme="dark"] { --border: #888; --border-strong: #bbb; --text-muted: #aaa; }
+}
+/* Keep responsive overrides last so later component declarations cannot win the cascade. */
+@media (max-width: 760px) {
+  .topbar { flex-direction: column; }
+  .topbar-actions { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+  .philo-banner { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -295,28 +341,28 @@ body::-webkit-scrollbar { display: none; }
   <div class="topbar">
     <div>
       <h1><span>Simcise</span> Design System</h1>
-      <div class="topbar-meta">v3.3 · Simplex × Concise · 2026.08.16</div>
+      <div class="topbar-meta">V1.0 · Simplex × Concise</div>
     </div>
-    <div style="display:flex;align-items:center;gap:20px">
+    <div class="topbar-actions">
       <div class="theme-switcher">
-        <button class="theme-btn active" data-set-theme="light">Light</button>
-        <button class="theme-btn" data-set-theme="dark">Dark</button>
+        <button class="theme-btn active" data-set-theme="light" aria-pressed="true">Light</button>
+        <button class="theme-btn" data-set-theme="dark" aria-pressed="false">Dark</button>
       </div>
       <div class="win-controls" title="hover 才出现，移开即隐 · 关闭用主题反色">
-        <button class="win-btn" title="最小化">—</button>
-        <button class="win-btn" title="最大化">▢</button>
-        <button class="win-btn close" title="关闭（主题反色，非红色）">✕</button>
+        <button class="win-btn" title="最小化" aria-label="最小化演示">—</button>
+        <button class="win-btn" title="最大化" aria-label="最大化演示">▢</button>
+        <button class="win-btn close" title="关闭（主题反色，非红色）" aria-label="关闭演示">✕</button>
       </div>
     </div>
   </div>
-  <div style="margin-top:-52px;margin-bottom:48px;font-size:11px;color:var(--text-faint)">↑ 把鼠标移到此行上方：窗口控制按钮 hover 浮现，移开即隐 · 关闭键悬停变主题反色（红色仅留给清空数据等破坏性操作）</div>
+  <div class="topbar-hint">↑ 把鼠标移到此行上方：窗口控制按钮 hover 浮现，移开即隐 · 关闭键悬停变主题反色（红色仅留给清空数据等破坏性操作）</div>
 
   <!-- Philosophy Banner: Simplex × Concise -->
   <div class="philo-banner">
     <div class="philo-item"><b>Simplex 温润</b>Warmth first — breathing, comfort, organic rhythm. What users feel before they think.</div>
     <div class="philo-item"><b>Concise 秩序</b>Rational order — mathematical spacing, token-driven color, systematic hierarchy. The skeleton beneath.</div>
     <div class="philo-item"><b>生长优先</b>Elements morph in place — no destroy & recreate. A button becomes a close icon, a card unfolds.</div>
-    <div class="philo-item"><b>零弹窗</b>Never popup — every detail grows from its source card. Restraint is a feature, not a limitation.</div>
+    <div class="philo-item"><b>原地完成优先</b>Routine work grows from its source. Safety, permission and irreversible actions may use an accessible modal.</div>
   </div>
   <div style="text-align:center;margin-top:-48px;margin-bottom:64px;font-size:12px;color:var(--text-muted);letter-spacing:0.5px;line-height:1.8"><em>Simplex × Concise</em> — 温润的呼吸感 × 理性的秩序感，混合而非对立。<br>规范是骨架，不是枷锁。遵守 Token 和间距，其余自由发挥。</div>
 
@@ -329,7 +375,7 @@ body::-webkit-scrollbar { display: none; }
   <div class="section">
     <div class="section-title"><span class="num">01</span> Accent Color Family</div>
     <div class="section-desc">One core hue → 7-step extended family · Shore "Deep Sea Teal"</div>
-    <div class="section-rule"><b>Rule:</b> Every product has ONE core accent hue extended into a 7-step family (50→700). Never name colors plainly ("green","blue"). Always use variant names ("Deep Sea Teal","Brick Rust","Forest Moss"). Red (#D94F4F) is reserved for danger only — never as accent.</div>
+    <div class="section-rule"><b>Rule:</b> Every product has ONE core accent hue extended into a 7-step family (50→700). Never name colors plainly ("green","blue"). Always use variant names ("Deep Sea Teal","Brick Rust","Forest Moss"). Red (#B73A3A) is reserved for danger only — never as accent.</div>
     <div class="grid-7">
       <div class="color-card"><div class="color-swatch" style="background:#E8F0EF"><span>#E8F0EF</span></div><div class="color-info"><div class="name">50 · Mist</div><div class="token">--accent-50</div></div></div>
       <div class="color-card"><div class="color-swatch" style="background:#C5DDD9"><span>#C5DDD9</span></div><div class="color-info"><div class="name">100 · Foam</div><div class="token">--accent-100</div></div></div>
@@ -341,7 +387,7 @@ body::-webkit-scrollbar { display: none; }
     </div>
     <div style="margin-top:20px"><div class="sub-label">Usage Map</div>
       <div class="card" style="padding:14px;font-size:12px;line-height:1.8;color:var(--text-secondary)">
-        <b style="color:var(--accent-50)">50 Mist</b> → selection bg &nbsp;·&nbsp; <b style="color:var(--accent-200)">200 Tide</b> → hover bg, tag &nbsp;·&nbsp; <b style="color:var(--accent-300)">300 Reef</b> → link hover &nbsp;·&nbsp; <b style="color:var(--accent-400)">400 Kelp</b> → secondary btn &nbsp;·&nbsp; <b style="color:var(--accent)">500 Core</b> → primary actions &nbsp;·&nbsp; <b style="color:var(--accent-600)">600 Deep</b> → pressed &nbsp;·&nbsp; <b style="color:var(--accent-700)">700 Abyss</b> → text on light
+        <b style="background:var(--accent-50);color:var(--accent-700);padding:2px 8px;border-radius:6px;border:1px solid var(--accent-100)">50 Mist</b> → selection bg &nbsp;·&nbsp; <b style="background:var(--accent-200);color:#0E3F3C;padding:2px 8px;border-radius:6px;border:1px solid var(--accent-200)">200 Tide</b> → hover bg, tag &nbsp;·&nbsp; <b style="background:var(--accent-300);color:white;padding:2px 8px;border-radius:6px">300 Reef</b> → link hover &nbsp;·&nbsp; <b style="background:var(--accent-400);color:white;padding:2px 8px;border-radius:6px">400 Kelp</b> → secondary btn &nbsp;·&nbsp; <b style="background:var(--accent);color:white;padding:2px 8px;border-radius:6px">500 Core</b> → primary actions &nbsp;·&nbsp; <b style="background:var(--accent-600);color:white;padding:2px 8px;border-radius:6px">600 Deep</b> → pressed &nbsp;·&nbsp; <b style="background:var(--accent-700);color:white;padding:2px 8px;border-radius:6px">700 Abyss</b> → text on light
       </div>
     </div>
   </div>
@@ -362,8 +408,8 @@ body::-webkit-scrollbar { display: none; }
       <div class="grid-4">
         <div class="color-card"><div class="color-swatch" style="background:#1A1A1A"><span style="color:rgba(255,255,255,0.6)">#1A1A1A</span></div><div class="color-info"><div class="name">Primary</div><div class="token">--text</div></div></div>
         <div class="color-card"><div class="color-swatch" style="background:#666666"><span style="color:rgba(255,255,255,0.6)">#666666</span></div><div class="color-info"><div class="name">Secondary</div><div class="token">--text-secondary</div></div></div>
-        <div class="color-card"><div class="color-swatch" style="background:#999999"><span style="color:rgba(255,255,255,0.6)">#999999</span></div><div class="color-info"><div class="name">Muted</div><div class="token">--text-muted</div></div></div>
-        <div class="color-card"><div class="color-swatch" style="background:#AAAAAA"><span style="color:rgba(255,255,255,0.6)">#AAAAAA</span></div><div class="color-info"><div class="name">Faint</div><div class="token">--text-faint</div></div></div>
+        <div class="color-card"><div class="color-swatch" style="background:#707070"><span style="color:white">#707070</span></div><div class="color-info"><div class="name">Muted</div><div class="token">--text-muted</div></div></div>
+        <div class="color-card"><div class="color-swatch" style="background:#767676"><span style="color:white">#767676</span></div><div class="color-info"><div class="name">Faint</div><div class="token">--text-faint</div></div></div>
       </div>
     </div>
   </div>
@@ -447,7 +493,7 @@ body::-webkit-scrollbar { display: none; }
   <!-- 06 · Inputs + Dynamic Cursor -->
   <div class="section">
     <div class="section-title"><span class="num">06</span> Inputs + Dynamic Cursor</div>
-    <div class="section-desc">Static label · No floating label · 10px radius · <span style="color:var(--accent)">Dynamic cursor → E1</span></div>
+    <div class="section-desc">Static label · No floating label · 10px radius · <span style="color:var(--accent)">Dynamic cursor → E6</span></div>
     <div class="section-rule"><b>Rule:</b> Native caret hidden, replaced by accent-colored 1.8px thin bar. 120ms ease glide — feels continuous, not teleporting. Stops 600ms → enters blink. Text selection restricted globally.</div>
     <div class="card" style="padding:20px">
       <div class="grid-2">
@@ -531,13 +577,13 @@ body::-webkit-scrollbar { display: none; }
   <!-- 12 · Loading — Orbit spinner + skeleton -->
   <div class="section">
     <div class="section-title"><span class="num">12</span> Loading States</div>
-    <div class="section-desc">Shimmer placeholders · <span style="color:var(--accent)">Orbit spinner → E2</span></div>
-    <div class="section-rule"><b>Rule:</b> Spinner is NOT uniform rotation. A ball on a circular track, pushed — fast-slow-fast-slow alternating. Like a marble rolling down a curved ramp.</div>
+    <div class="section-desc">Shimmer placeholders · <span style="color:var(--accent)">Inertial dual-ring spinner</span></div>
+    <div class="section-rule"><b>Rule:</b> Two concentric rings accelerate, coast, and recover at different speeds. Keep readable loading status beside the motion.</div>
     <div class="card" style="padding:20px">
       <div class="flex-row" style="margin-bottom:24px;gap:24px">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="orbit-spinner"><div class="orbit-track"><div class="orbit-ball"></div></div></div><span style="font-size:11px;color:var(--text-muted)">Accent</span></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="orbit-spinner"><div class="orbit-track"><div class="orbit-ball" style="background:var(--danger);box-shadow:0 0 6px rgba(217,79,79,0.3)"></div></div></div><span style="font-size:11px;color:var(--text-muted)">Danger</span></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="orbit-spinner"><div class="orbit-track"><div class="orbit-ball" style="background:var(--success);box-shadow:0 0 6px rgba(5,150,105,0.3)"></div></div></div><span style="font-size:11px;color:var(--text-muted)">Success</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="orbit-spinner" role="status" aria-label="Loading"><div class="orbit-track"></div><div class="orbit-ball"></div></div><span style="font-size:11px;color:var(--text-muted)">Accent</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="orbit-spinner" role="status" aria-label="Loading" style="color:var(--danger)"><div class="orbit-track"></div><div class="orbit-ball"></div></div><span style="font-size:11px;color:var(--text-muted)">Danger</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div class="orbit-spinner" role="status" aria-label="Loading" style="color:var(--success)"><div class="orbit-track"></div><div class="orbit-ball"></div></div><span style="font-size:11px;color:var(--text-muted)">Success</span></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;max-width:300px">
         <div class="skeleton" style="width:100%"></div>
@@ -591,8 +637,8 @@ body::-webkit-scrollbar { display: none; }
       <div class="shadow-box" style="box-shadow:var(--shadow-air)">Air · 实体感 · 0 1px 3px 0.04 + 0 6px 20px -8px 0.05</div>
       <div class="shadow-box" style="box-shadow:var(--shadow-lift)">Lift · 呼吸感 · 0 2px 6px 0.05 + 0 14px 36px -14px 0.10</div>
     </div>
-    <div style="margin-top:16px" class="card" style="padding:16px">
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--text)">红色唯一性：</b>红色（#D94F4F）仅用于真正的破坏性操作——清空数据、删除、不可恢复的确认。关闭按钮、取消、错误提示框的图标都用主题反色（<code style="font-family:var(--font-mono);font-size:11px">--inverse</code>），不乱用红。</div>
+    <div class="card" style="margin-top:16px;padding:16px">
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--text)">红色唯一性：</b>红色（#B73A3A）仅用于真正的破坏性操作——清空数据、删除、不可恢复的确认。关闭按钮、取消使用主题反色（<code style="font-family:var(--font-mono);font-size:11px">--inverse</code>），错误状态仍使用危险语义色。</div>
     </div>
   </div>
 
@@ -631,23 +677,49 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- E2 · Morphing FAB -->
+  <!-- E2 · Ceramic Texture -->
   <div class="section">
-    <div class="section-title"><span class="num e-num">E2</span> Morphing · One Button, Two Faces</div>
+    <div class="section-title"><span class="num e-num">E2</span> Ceramic · Fluid + Warmth</div>
+    <div class="section-desc">Porcelain warmth · Subtle gradient · Inner light · Smooth as glazed pottery</div>
+    <div class="section-rule"><b>Rule:</b> Surfaces feel like ceramic — warm gradient (not flat color), soft layered shadows, inner highlight at top edge. Hover lifts gently. Everything feels touchable and smooth.</div>
+    <div class="grid-2">
+      <div class="ceramic-surface"><div style="font-size:14px;font-weight:600;margin-bottom:8px">Ceramic Panel</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Warm gradient background + inset highlight at top + layered soft shadows. Feels like glazed pottery — smooth, warm, tangible.</div><div style="margin-top:12px;display:flex;gap:8px"><div class="ceramic-chip">Action A</div><div class="ceramic-chip">Action B</div></div></div>
+      <div class="ceramic-surface"><div style="font-size:14px;font-weight:600;margin-bottom:8px">Fluid Controls</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px">Buttons and chips inherit the ceramic warmth. Subtle hover lift. Press to feel the depth.</div><div style="display:flex;gap:8px;flex-wrap:wrap"><div class="ceramic-chip">Fluid</div><div class="ceramic-chip" style="border-color:var(--accent-200);color:var(--accent)">Active</div><div class="ceramic-chip">Warm</div></div></div>
+    </div>
+  </div>
+
+  <!-- E3 · Light Awareness -->
+  <div class="section">
+    <div class="section-title"><span class="num e-num">E3</span> Light Awareness · Global</div>
+    <div class="section-desc">Light has direction and warmth — surfaces respond to a virtual light source</div>
+    <div class="section-rule"><b>Rule:</b> Light comes from top-left. All surfaces show: top edge highlight (inner glow), bottom edge shadow (subtle border darkening). Consistent across every component, every product.</div>
+    <div class="grid-3">
+      <div class="light-zone" style="background:var(--surface)"><div style="font-size:13px;font-weight:600;margin-bottom:6px;position:relative">Surface</div><div style="font-size:11px;color:var(--text-secondary);position:relative">Radial highlight from top-left. Pure and clean.</div></div>
+      <div class="light-zone" style="background:var(--bg-secondary)"><div style="font-size:13px;font-weight:600;margin-bottom:6px;position:relative">Secondary</div><div style="font-size:11px;color:var(--text-secondary);position:relative">Warmer tone, same light direction.</div></div>
+      <div class="light-zone" style="background:var(--bg-tertiary)"><div style="font-size:13px;font-weight:600;margin-bottom:6px;position:relative">Tertiary</div><div style="font-size:11px;color:var(--text-secondary);position:relative">Deeper recess, light barely reaches.</div></div>
+    </div>
+    <div class="card" style="margin-top:16px;padding:16px">
+      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--text)">Light Formula:</b> Every surface = base color + radial-gradient highlight (top-left 30%/20%) + 1px border (lighter top, darker bottom) + inset shadow (white highlight top, 0.5~0.7 opacity). Dark mode: reduce highlight to 0.03~0.05 opacity, increase shadow depth.</div>
+    </div>
+  </div>
+
+  <!-- E4 · Morphing FAB -->
+  <div class="section">
+    <div class="section-title"><span class="num e-num">E4</span> Morphing · One Button, Two Faces</div>
     <div class="section-desc" id="fabDesc">Click the + button — it rotates and morphs into × (one element, fluid transform)</div>
     <div class="section-rule"><b>Rule:</b> If one button can morph, don't use two. Plus → X via rotation. The horizontal line shrinks away, vertical line rotates 45°. Same DOM element, fluid transition.</div>
     <div class="card" style="padding:24px">
       <div class="flex-row" style="gap:32px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <button class="morph-fab" id="demoFab" onclick="toggleFab(this)"><span class="plus-line plus-h"></span><span class="plus-line plus-v"></span></button>
+          <button class="morph-fab" id="demoFab" onclick="toggleFab(this)" aria-label="展开新建项目" aria-expanded="false" aria-controls="fabTarget"><span class="plus-line plus-h"></span><span class="plus-line plus-v"></span></button>
           <span style="font-size:11px;color:var(--text-muted)">Click me</span>
         </div>
         <div style="flex:1;max-width:280px">
-          <div class="card expand-card" id="fabTarget" style="padding:16px" onclick="toggleFabCard()">
-            <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="card expand-card" id="fabTarget" style="padding:16px">
+            <button class="expand-trigger" onclick="toggleFabCard()" aria-expanded="false">
               <div><div style="font-size:14px;font-weight:600">New Item</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">Click to expand · Card grows, never popup</div></div>
               <span class="expand-arrow">▶</span>
-            </div>
+            </button>
             <div class="expand-hidden">
               <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:8px">
                 <input class="input" type="text" placeholder="Type something here..." style="width:100%">
@@ -661,17 +733,17 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- E3 · Card Expansion -->
+  <!-- CORE · Card Expansion — Foundation「原地完成优先」 -->
   <div class="section">
-    <div class="section-title"><span class="num e-num">E3</span> Card Expansion · Zero Dialogs</div>
-    <div class="section-desc">All interactions through card morphing — horizontal & vertical expansion, never popups</div>
-    <div class="section-rule"><b>Rule:</b> ABSOLUTELY NO POPUPS. Every detail view, form, or panel grows from its source card. The card stretches, content reveals, border morphs to accent. Reversible.</div>
+    <div class="section-title"><span class="num core-num">CORE</span> Card Expansion · Zero Dialogs</div>
+    <div class="section-desc">Foundation default, not an optional module — routine details and forms grow from their source; safety boundaries remain explicit exceptions</div>
+    <div class="section-rule"><b>Rule:</b> Routine work stays in context. Use accessible modal confirmation only for permissions, data loss and irreversible actions.</div>
     <div class="grid-2">
-      <div class="card expand-card" onclick="this.classList.toggle('expanded')">
-        <div style="display:flex;align-items:center;justify-content:space-between">
+      <div class="card expand-card">
+        <button class="expand-trigger" onclick="toggleExpansion(this)" aria-expanded="false">
           <div><div class="card-title">Settings Panel</div><div class="card-desc">Click to expand — settings grow in place</div></div>
           <span class="expand-arrow">▶</span>
-        </div>
+        </button>
         <div class="expand-hidden">
           <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:10px">
             <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px">Notifications</span><button class="toggle-btn on" onclick="event.stopPropagation();toggleSwitch(this)"><span class="toggle-label">On</span>On</button></div>
@@ -680,11 +752,11 @@ body::-webkit-scrollbar { display: none; }
           </div>
         </div>
       </div>
-      <div class="card expand-card" onclick="this.classList.toggle('expanded')">
-        <div style="display:flex;align-items:center;justify-content:space-between">
+      <div class="card expand-card">
+        <button class="expand-trigger" onclick="toggleExpansion(this)" aria-expanded="false">
           <div><div class="card-title">Track Details</div><div class="card-desc">Click — card stretches to reveal metadata</div></div>
           <span class="expand-arrow">▶</span>
-        </div>
+        </button>
         <div class="expand-hidden">
           <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--text-secondary)">
             <div style="display:flex;justify-content:space-between"><span>Artist</span><span style="color:var(--text)">Fifo Music</span></div>
@@ -697,58 +769,32 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
-  <!-- E4 · Ceramic Texture -->
+  <!-- E9 · Inertial Dual Ring Spinner -->
   <div class="section">
-    <div class="section-title"><span class="num e-num">E4</span> Ceramic · Fluid + Warmth</div>
-    <div class="section-desc">Porcelain warmth · Subtle gradient · Inner light · Smooth as glazed pottery</div>
-    <div class="section-rule"><b>Rule:</b> Surfaces feel like ceramic — warm gradient (not flat color), soft layered shadows, inner highlight at top edge. Hover lifts gently. Everything feels touchable and smooth.</div>
-    <div class="grid-2">
-      <div class="ceramic-surface"><div style="font-size:14px;font-weight:600;margin-bottom:8px">Ceramic Panel</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.6">Warm gradient background + inset highlight at top + layered soft shadows. Feels like glazed pottery — smooth, warm, tangible.</div><div style="margin-top:12px;display:flex;gap:8px"><div class="ceramic-chip">Action A</div><div class="ceramic-chip">Action B</div></div></div>
-      <div class="ceramic-surface"><div style="font-size:14px;font-weight:600;margin-bottom:8px">Fluid Controls</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px">Buttons and chips inherit the ceramic warmth. Subtle hover lift. Press to feel the depth.</div><div style="display:flex;gap:8px;flex-wrap:wrap"><div class="ceramic-chip">Fluid</div><div class="ceramic-chip" style="border-color:var(--accent-200);color:var(--accent)">Active</div><div class="ceramic-chip">Warm</div></div></div>
-    </div>
-  </div>
-
-  <!-- E5 · Light Awareness -->
-  <div class="section">
-    <div class="section-title"><span class="num e-num">E5</span> Light Awareness · Global</div>
-    <div class="section-desc">Light has direction and warmth — surfaces respond to a virtual light source</div>
-    <div class="section-rule"><b>Rule:</b> Light comes from top-left. All surfaces show: top edge highlight (inner glow), bottom edge shadow (subtle border darkening). Consistent across every component, every product.</div>
-    <div class="grid-3">
-      <div class="light-zone" style="background:var(--surface)"><div style="font-size:13px;font-weight:600;margin-bottom:6px;position:relative">Surface</div><div style="font-size:11px;color:var(--text-secondary);position:relative">Radial highlight from top-left. Pure and clean.</div></div>
-      <div class="light-zone" style="background:var(--bg-secondary)"><div style="font-size:13px;font-weight:600;margin-bottom:6px;position:relative">Secondary</div><div style="font-size:11px;color:var(--text-secondary);position:relative">Warmer tone, same light direction.</div></div>
-      <div class="light-zone" style="background:var(--bg-tertiary)"><div style="font-size:13px;font-weight:600;margin-bottom:6px;position:relative">Tertiary</div><div style="font-size:11px;color:var(--text-secondary);position:relative">Deeper recess, light barely reaches.</div></div>
-    </div>
-    <div style="margin-top:16px" class="card" style="padding:16px">
-      <div style="font-size:12px;color:var(--text-secondary);line-height:1.7"><b style="color:var(--text)">Light Formula:</b> Every surface = base color + radial-gradient highlight (top-left 30%/20%) + 1px border (lighter top, darker bottom) + inset shadow (white highlight top, 0.5~0.7 opacity). Dark mode: reduce highlight to 0.03~0.05 opacity, increase shadow depth.</div>
-    </div>
-  </div>
-
-  <!-- E6 · Binary Star Spinner -->
-  <div class="section">
-    <div class="section-title"><span class="num e-num">E6</span> Binary Star Spinner</div>
-    <div class="section-desc">Two stars orbiting a shared center · Overlap blends into accent light · mix-blend-mode</div>
-    <div class="section-rule"><b>Rule:</b> NOT a single ball on a track. Two circles on the same orbit, 180° apart. They revolve around the shared center. Where they cross, colors blend naturally — multiply (light) or screen (dark) creates the accent-light overlap. Use for page-level loading.</div>
+    <div class="section-title"><span class="num e-num">E9</span> Inertial Dual Ring Spinner</div>
+    <div class="section-desc">Concentric outer and inner rings · Independent acceleration and coasting</div>
+    <div class="section-rule"><b>Rule:</b> The outer and inner rings rotate independently with alternating acceleration and inertia. Use for page-level loading and preserve a readable status.</div>
     <div class="card" style="padding:24px">
       <div class="flex-row" style="gap:40px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <div class="binary-spinner"><div class="orbit"><div class="star"></div></div><div class="orbit"><div class="star"></div></div></div>
+          <div class="binary-spinner" role="status" aria-label="Loading"><div class="ring ring-outer"></div><div class="ring ring-inner"></div></div>
           <span style="font-size:11px;color:var(--text-muted)">Default</span>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <div class="binary-spinner" style="width:36px;height:36px"><div class="orbit"><div class="star" style="width:16px;height:16px;margin:-8px 0 0 -8px"></div></div><div class="orbit"><div class="star" style="width:16px;height:16px;margin:-8px 0 0 -8px"></div></div></div>
+          <div class="binary-spinner" role="status" aria-label="Loading" style="width:36px;height:36px"><div class="ring ring-outer"></div><div class="ring ring-inner"></div></div>
           <span style="font-size:11px;color:var(--text-muted)">Small</span>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <div class="binary-spinner" style="width:64px;height:64px"><div class="orbit"><div class="star" style="width:28px;height:28px;margin:-14px 0 0 -14px"></div></div><div class="orbit"><div class="star" style="width:28px;height:28px;margin:-14px 0 0 -14px"></div></div></div>
+          <div class="binary-spinner" role="status" aria-label="Loading" style="width:64px;height:64px"><div class="ring ring-outer"></div><div class="ring ring-inner"></div></div>
           <span style="font-size:11px;color:var(--text-muted)">Large</span>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <div class="binary-spinner"><div class="orbit"><div class="star" style="background:var(--danger);opacity:0.5"></div></div><div class="orbit"><div class="star" style="background:var(--danger);opacity:0.5"></div></div></div>
+          <div class="binary-spinner" role="status" aria-label="Loading" style="color:var(--danger)"><div class="ring ring-outer"></div><div class="ring ring-inner"></div></div>
           <span style="font-size:11px;color:var(--text-muted)">Danger</span>
         </div>
       </div>
       <div style="margin-top:24px;padding:14px 18px;border-radius:10px;background:var(--bg-secondary);border:1px solid var(--border);font-size:12px;color:var(--text-secondary);line-height:1.7">
-        <b style="color:var(--text)">How it works:</b> Two circles on the same orbit, 180° apart (via animation-delay: -1.4s). They revolve around the shared center. At the crossing point, <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-tertiary);padding:1px 5px;border-radius:4px">mix-blend-mode: multiply</code> blends the two accent-200 circles into a deeper accent tone — the overlap IS the accent light.
+        <b style="color:var(--text)">How it works:</b> The outer ring accelerates clockwise and coasts; the inner ring counter-rotates on a shorter cycle. Their phase difference creates inertia without uniform mechanical spinning.
       </div>
     </div>
   </div>
@@ -778,7 +824,7 @@ body::-webkit-scrollbar { display: none; }
         <div style="font-size:11px;color:var(--text-secondary)">WCAG AA contrast ≥ 4.5:1. Focus-visible rings. prefers-reduced-motion respected.</div>
       </div>
     </div>
-    <div style="margin-top:16px" class="card" style="padding:16px">
+    <div class="card" style="margin-top:16px;padding:16px">
       <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
         <b style="color:var(--text)">Responsive:</b> Mobile ≤ 600px (single column) · Tablet 600-1024px (2 columns) · Desktop > 1024px (full grid). Window constraints: min 360×640, recommended 1280×720+.
         <br><b style="color:var(--text)">Motion:</b> All animations respect <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-tertiary);padding:1px 5px;border-radius:4px">@media (prefers-reduced-motion: reduce)</code>. When active, transitions snap to instant, breathing pauses.
@@ -786,26 +832,48 @@ body::-webkit-scrollbar { display: none; }
     </div>
   </div>
 
+  <div class="section">
+    <div class="section-title"><span class="num">31</span> Product Contract · Route × Yuich</div>
+    <div class="section-desc">Shared semantics and quality gates, distinct product expression</div>
+    <div class="section-rule"><b>Boundary:</b> Simcise publishes a one-way token contract. Products adopt it only in their own planned migration; this repository never rewrites Route or Yuich.</div>
+    <div class="grid-2">
+      <div class="card" style="box-shadow:none">
+        <div class="card-title">Route · Dusk Lavender</div>
+        <div class="card-desc">Strictly flat. Hairlines and surface steps create hierarchy. Simcise Air / Lift resolve to <code>none</code>; no glow, ceramic or glass is introduced.</div>
+        <div class="card-tag">data-simcise-product="route"</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Yuich · Forest Moss</div>
+        <div class="card-desc">Warm canvas and restrained Air / Lift depth. Existing duplicated variables can migrate gradually through semantic aliases without changing runtime architecture.</div>
+        <div class="card-tag">data-simcise-product="yuich"</div>
+      </div>
+    </div>
+  </div>
+
   <div style="text-align:center;padding-top:40px;border-top:1px solid var(--border);margin-top:20px">
-    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise v3.3 · Simplex × Concise · 2026.08.16</div>
+    <div style="font-size:11px;color:var(--text-faint);font-family:var(--font-mono)">Simcise V1.0 · Simplex × Concise · 2026.08.19</div>
     <div style="font-size:10px;color:var(--text-faint);margin-top:4px;font-style:italic">"Simplex 温润优先 · Concise 秩序托底 · 规范是骨架不是枷锁"</div>
   </div>
 
 </div>
-<div class="toast-container" id="toastContainer"></div>
+<div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 <script>
-document.querySelectorAll('[data-set-theme]').forEach(btn=>{btn.addEventListener('click',()=>{document.documentElement.setAttribute('data-theme',btn.dataset.setTheme);document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')})});
+document.querySelectorAll('[data-set-theme]').forEach(btn=>{btn.addEventListener('click',()=>{document.documentElement.setAttribute('data-theme',btn.dataset.setTheme);document.querySelectorAll('.theme-btn').forEach(b=>{const active=b===btn;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))})})});
 
-function showToast(type,msg){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;const icons={success:'✓',error:'',warning:'⚠',info:'ℹ'};t.innerHTML=`<span>${icons[type]||''}</span><span>${msg}</span><button class="toast-close" onclick="this.parentElement.remove()"></button>`;c.appendChild(t);setTimeout(()=>{t.style.animation='fadeOut 200ms ease forwards';setTimeout(()=>t.remove(),200)},3000)}
+function showToast(type,msg){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;const icons={success:'✓',error:'✕',warning:'⚠',info:'ℹ'};t.innerHTML=`<span>${icons[type]||''}</span><span>${msg}</span><button class="toast-close" onclick="this.parentElement.remove()">×</button>`;c.appendChild(t);setTimeout(()=>{t.style.animation='fadeOut 200ms ease forwards';setTimeout(()=>t.remove(),200)},3000)}
 
-function toggleSwitch(el){const isOn=el.classList.contains('on');el.classList.toggle('on');el.classList.toggle('off');const txt=isOn?'Off':'On';const old=el.querySelector('.toggle-label');if(old)old.remove();el.childNodes.forEach(n=>{if(n.nodeType===3)el.removeChild(n)});el.insertBefore(document.createTextNode(txt),null);const label=document.createElement('span');label.className='toggle-label';label.textContent=txt;el.appendChild(label);void el.offsetWidth;el.classList.add('show-label');setTimeout(()=>{el.classList.remove('show-label')},1500)}
+function toggleSwitch(el){const isOn=el.classList.contains('on');el.classList.toggle('on');el.classList.toggle('off');const txt=isOn?'Off':'On';el.setAttribute('aria-pressed',String(!isOn));const old=el.querySelector('.toggle-label');if(old)old.remove();el.childNodes.forEach(n=>{if(n.nodeType===3)el.removeChild(n)});el.insertBefore(document.createTextNode(txt),null);const label=document.createElement('span');label.className='toggle-label';label.textContent=txt;el.appendChild(label);void el.offsetWidth;el.classList.add('show-label');setTimeout(()=>{el.classList.remove('show-label')},1500)}
 
 function animateEase(el,easing){const p=el.parentElement;const maxW=p.offsetWidth-30;el.style.transition='none';el.style.width='30px';requestAnimationFrame(()=>{el.style.transition=`width 600ms ${easing}`;el.style.width=maxW+'px';setTimeout(()=>{el.style.transition=`width 400ms cubic-bezier(0.4,0,0.2,1)`;el.style.width='30px'},800)})}
 
 document.querySelectorAll('.nav-item').forEach(item=>{item.addEventListener('click',()=>{const s=item.parentElement.querySelectorAll('.nav-item');s.forEach(x=>x.classList.remove('active'));item.classList.add('active')})});
 
-function toggleFab(btn){btn.classList.toggle('active');const t=document.getElementById('fabTarget');const d=document.getElementById('fabDesc');if(btn.classList.contains('active')){t.classList.add('expanded');if(d)d.textContent='Button morphed to \u00d7 \u2014 card expanded below (fluid, one element)';}else{t.classList.remove('expanded');if(d)d.textContent='Click the + button \u2014 it rotates and morphs into \u00d7 (one element, fluid transform)';}}
-function toggleFabCard(){const t=document.getElementById('fabTarget');const b=document.getElementById('demoFab');t.classList.toggle('expanded');if(!t.classList.contains('expanded')&&b)b.classList.remove('active');}
+function setExpansion(card,expanded){card.classList.toggle('expanded',expanded);const trigger=card.querySelector('.expand-trigger');if(trigger)trigger.setAttribute('aria-expanded',String(expanded));}
+function toggleExpansion(trigger){const card=trigger.closest('.expand-card');setExpansion(card,!card.classList.contains('expanded'));}
+function toggleFab(btn){btn.classList.toggle('active');const expanded=btn.classList.contains('active');btn.setAttribute('aria-expanded',String(expanded));const t=document.getElementById('fabTarget');const d=document.getElementById('fabDesc');setExpansion(t,expanded);if(d)d.textContent=expanded?'Button morphed to \u00d7 \u2014 card expanded below (fluid, one element)':'Click the + button \u2014 it rotates and morphs into \u00d7 (one element, fluid transform)';}
+function toggleFabCard(){const t=document.getElementById('fabTarget');const b=document.getElementById('demoFab');const expanded=!t.classList.contains('expanded');setExpansion(t,expanded);if(b){b.classList.toggle('active',expanded);b.setAttribute('aria-expanded',String(expanded));}}
+
+document.querySelectorAll('.toggle-btn').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.classList.contains('on'))));
 
 /* ═══ Dynamic Cursor · Monkeytype-style fluid caret ═══ */
 var DynamicCursor=(function(){var D={blinkDelayMs:600,transitionMs:120,rowSelector:'.dc-input-row'};function init(inputEl,caretEl,options){if(!inputEl||!caretEl)return null;var opts=Object.assign({},D,options||{});var inputRow=inputEl.closest(opts.rowSelector);if(!inputRow)return null;var mirror=document.createElement('div');mirror.style.cssText=['position:absolute','visibility:hidden','white-space:pre','font:inherit','letter-spacing:inherit','text-transform:inherit','border:0','padding:0','margin:0','left:0','top:0','pointer-events:none'].join(';');inputRow.style.position='relative';inputRow.appendChild(mirror);function measureX(){var cs=getComputedStyle(inputEl);mirror.style.font=cs.font;mirror.style.letterSpacing=cs.letterSpacing;mirror.style.fontSize=cs.fontSize;mirror.style.fontFamily=cs.fontFamily;mirror.style.fontWeight=cs.fontWeight;mirror.style.fontStyle=cs.fontStyle;mirror.style.textTransform=cs.textTransform;var val=inputEl.value||'';var pos=inputEl.selectionStart||0;mirror.textContent=val.substring(0,pos);var cx=mirror.getBoundingClientRect().width;var ir=inputEl.getBoundingClientRect();var rr=inputRow.getBoundingClientRect();cx+=ir.left-rr.left-(inputEl.scrollLeft||0);cx+=(parseFloat(cs.paddingLeft)||0);return cx;}var bt=null,raf=false;function update(){if(raf)return;raf=true;requestAnimationFrame(function(){raf=false;if(document.activeElement!==inputEl){caretEl.classList.remove('is-visible','is-blinking');return;}var x=measureX();caretEl.style.transform='translateX('+x+'px)';caretEl.classList.add('is-visible');if(bt)clearTimeout(bt);caretEl.classList.remove('is-blinking');bt=setTimeout(function(){caretEl.classList.add('is-blinking');},opts.blinkDelayMs);});}function onInput(){update();}function onClick(){update();}function onKeyup(){update();}function onFocus(){update();}function onBlur(){caretEl.classList.remove('is-visible','is-blinking');if(bt)clearTimeout(bt);}function onSelChange(){if(document.activeElement===inputEl)update();}function onResize(){if(document.activeElement===inputEl)update();}inputEl.addEventListener('input',onInput);inputEl.addEventListener('click',onClick);inputEl.addEventListener('keyup',onKeyup);inputEl.addEventListener('focus',onFocus);inputEl.addEventListener('blur',onBlur);document.addEventListener('selectionchange',onSelChange);window.addEventListener('resize',onResize);update();return{destroy:function(){inputEl.removeEventListener('input',onInput);inputEl.removeEventListener('click',onClick);inputEl.removeEventListener('keyup',onKeyup);inputEl.removeEventListener('focus',onFocus);inputEl.removeEventListener('blur',onBlur);document.removeEventListener('selectionchange',onSelChange);window.removeEventListener('resize',onResize);if(bt)clearTimeout(bt);if(mirror.parentNode)mirror.parentNode.removeChild(mirror);caretEl.classList.remove('is-visible','is-blinking');}};}return{init:init};})();

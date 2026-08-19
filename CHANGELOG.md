@@ -1,142 +1,40 @@
 # Changelog
 
-All notable changes to the Simcise Design System are documented in this file.
+Simcise 当前唯一版本为 **V1.0**。在正式发布前，所有优化都记录在同一版本下；本文件不引入额外版本号。
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
+## V1.0
 
-## [3.3.0] — 2026-08-16
+### 规范治理
 
-### Changed
-- **Shadow system overhaul** — 从 4 级（sm/md/lg/xl）压缩为 **2 级轻径向阴影**：`--shadow-air`（空气感）+ `--shadow-lift`（呼吸感）。大模糊 + 负 spread 让阴影径向弥散、边缘消失。装饰性阴影 = 视觉噪音，禁止。
-- **红色唯一性** — `--danger` 仅用于破坏性操作（清空数据、删除、不可恢复确认）。新增 `--inverse` 主题反色 Token 专供关闭/取消等中性强动作。
-- index.html topbar 新增窗口控制按钮实演：hover 浮现、移开即隐，关闭键悬停变主题反色。
-- Shadow 章节（15）重写，红色唯一性说明卡。
+- 建立 Foundation / Enhancement 双层架构；Foundation 是强制质量底线，Enhancement 按场景选用。
+- 建立 Reference → System → Component 三层 Token 契约，禁止业务组件直接消费原始色值。
+- 明确常规任务原地完成优先；安全、权限、不可逆操作可使用具备完整焦点管理的模态确认。
+- 建立 Route / Yuich 单向接入契约：共享语义与质量门槛，不强制产品视觉同质化。
+- 将 `tokens.json` 确立为唯一 Token 事实源，通过确定性脚本生成 `tokens.css`。
+- 将 AI Skill 改为前置元数据 + 核心执行协议 + 按需 references 的渐进披露结构。
+- 将 MVP 技术边界固定为纯 HTML、CSS 与原生 JavaScript；不规划框架封装或页面运行时依赖。
 
-### Added
-- **Hover 隐藏交互规范** — 不常用功能 hover 浮现、移开即隐，按钮最小 36px 保证可点性。
-- tokens.json：`shadow.air/lift`、`color.inverse/inverseText`、constraints 新增 `shadowLevels`/`hoverRevealMinButton`/`redUsage`。
+### 视觉与交互
 
-## [3.2.0] — 2026-08-16
+- 阴影收敛为 Air / Lift 两级；Route 适配器明确为严格扁平例外。
+- 红色仅表达危险、错误与不可逆结果；关闭、取消使用主题反色或中性样式。
+- 补齐按钮、输入、卡片、导航、Toast、加载、展开等组件状态规则。
+- 对齐 Enhancement 编号，Card Expansion 归入 Foundation 核心交互。
 
-### Changed
-- **Typography overhaul** — 3+1 font system: Nunito (English) + 思源黑体 (Chinese) + Outfit (decorative numbers) + JetBrains Mono (code)
-- Section numbers & Part dividers now use Outfit (decorative, not mono)
-- Line height updated: base 1.55 → 1.6, CJK 1.65 → 1.7
-- Removed unused Poppins font from Google Fonts link
+### 无障碍与质量
 
-### Added
-- **Openness principle** — “规范是骨架，不是枷锁。遵守 Token 和间距，其余自由发挥。”
-- Typography section redesigned: 4-card layout showcasing each font with live samples
-- Oasis philosophy: “Simcise 应该是沙漠里的绿洲，不是狗皮膏药”
+- 增加 `:focus-visible`、`prefers-reduced-motion`、触屏 44×44px 目标与非 hover 回退规则。
+- 内容文本默认允许选择，仅应用标题栏、拖拽区和控件标签禁用选择。
+- 修复 CJK 字体回退顺序、无效重复属性、缺失图标、圆角 Token 偏差与不可见色样标签。
+- 明确文字对比、非文字对比、键盘路径、焦点返回、状态不可只依赖颜色等验收门槛。
 
-## [3.1.0] — 2026-08-16
+### 产物
 
-### Changed
-- **Core philosophy refined** — "Simplex × Concise": Simplex (温润、舒适、呼吸感) 优先，Concise (理性秩序、数学简洁) 托底。两者混合而非对立。
-- Display.html renamed to **index.html** (now serves as both design system display and GitHub Pages entry)
-- Page restructured into **5 Parts**: Information → Interaction → Motion → Enhancement → Adaptation
-- Philosophy banner rewritten around the dual-core concept
-
-### Added
-- **Part dividers** — 5 visual section dividers with Part labels (信息/交互/动效/质感/适配)
-- **Section 30: Theme & Adaptation** — Light/Dark cards, accessibility, responsive breakpoints, prefers-reduced-motion
-- **E9 Binary Star Spinner** — dual orbit loading animation with mix-blend-mode overlap
-
-## [3.0.0] — 2026-08-16
-
-### Changed
-- **Architecture overhaul** — Dual-layer system: Foundation (MUST) + Enhancement (OPTIONAL)
-- SKILL.md completely restructured: Foundation contains core tokens + hard constraints (~120 lines), Enhancement contains 8 optional modules (E1-E8) each with "when to use / when not to use" guidance
-- tokens.json updated with `$layer` markers on every token group
-- Enhancement modules now have `$module` tags (E1 Breathing, E2 Ceramic, E3 Light, E4 Morph, E5 Toggle, E6 Cursor, E7 Spinner, E8 Glass)
-
-### Added
-- **Vibe Coding Checklist** — 8-point quick checklist for AI code generation
-- **Enhancement module guidance** — Each module now includes "when to use" and "when NOT to use" conditions
-- Enhancement tokens section in tokens.json with breathing, ceramic, light awareness, dynamic cursor parameters
-
-### Why
-Previous versions treated all rules as equally important. v3.0 separates the "DNA" (Foundation — if you only follow this, output is already Simcise) from the "polish" (Enhancement — optional modules that add character). This makes the system actually usable for vibe coding: AI reads Foundation first, Enhancement only when the product calls for it.
-
-## [2.3.0] — 2026-08-16
-
-### Added
-- **Dynamic Cursor** — Monkeytype-style fluid caret (1.8px accent bar, 120ms ease glide, 600ms blink delay)
-- **Breathing & Life** section — 3-5s subtle shadow pulse animations for idle elements
-- **Morphing FAB** — Plus → X rotation morph demo (single DOM element, fluid transform)
-- **Card Expansion** — Zero-dialog pattern: cards expand in-place to reveal settings/details
-- **Ceramic Texture** — Warm gradient surfaces with inset highlights and layered soft shadows
-- **Light Awareness** — Unified top-left light source across all surfaces
-- **Philosophy Banner** — 4-column grid at page top: Breathing / Fluid Morph / Surprise / Zero Dialogs
-- **Toggle refinement** — On/Off first-letter-cap, label fades after 1.5s → soft night light
-- **Text selection restriction** — Global `user-select: none` for app-like feel
-- **SKILL.md** — AI skill entry point with Vibe Coding Rules and Design Language References
-- **index.html** — GitHub Pages landing page
-
-### Changed
-- Display.html spacing overhaul: section margin 56px → 88px, card padding 18px → 24px, title 16px → 19px
-- Page width narrowed: 1100px → 1000px for more focused feel
-- Grid gaps increased: 24px → 28px (2-col), 16px → 20px (3-col)
-- Toggle label transition: 200ms → 500ms ease for softer fade
-
-### Removed
-- All "乐颂/Lesong" brand references from spec (replaced with "Simcise")
-- Default accent is now achromatic (black/white/grey), product accents are optional variants
-
-## [2.2.0] — 2026-08-15
-
-### Added
-- **Accent Color Family** — 7-step extended family (50→700) with variant naming
-- **Product Accent Names** — Deep Sea Teal, Brick Rust, Forest Moss, Amber Ember, Dusk Lavender, Midnight Slate, Ocean Depth
-- **Orbit Spinner** — Non-uniform rotation: ball on circular track, fast-slow alternating
-- **Bank-card Buttons** — Elongated rounded rectangles (padding 10px 28px, radius 12px)
-- **Now Playing Card** (4.6.1) — Extreme minimalism with radial gradient, zero decoration
-- **Section Rules** — Accent-colored rule boxes for each section
-
-### Changed
-- Toggle redesigned: slider → rounded rect button (glow on / dim off)
-- All color swatches now have border lines (pure colors always bordered)
-- Color naming: variant names only, cannot identify at first glance
-
-## [2.1.0] — 2026-08-14
-
-### Added
-- Complete color system with Canonical Values + per-product palettes
-- Font weight / line-height / letter-spacing specifications
-- Border & divider specifications
-- Gradient patterns
-- z-index layer system
-- Animation directory (@keyframes template library)
-- Toast/notification, loading states, icon system, sidebar nav state machine
-- Responsive breakpoints, custom scrollbar specifications
-- Window size constraints
-
-### Changed
-- Color system refined to Canonical Values + complete per-product palettes
-- Added font weight/line-height/letter-spacing specs
-- Added border & divider, gradient, z-index sections
-
-## [2.0.0] — 2026-06-15
-
-### Added
-- Dark mode specifications across all components
-- Frosted glass (backdrop-filter) texture layers (4 blur levels)
-- Semantic color system (danger/success/warning/info)
-- Multi-product Accent Color comparison table
-- Component size references
-- Layout variants
-- Accessibility & performance chapter
-- Design Tokens quick reference
-
-### Changed
-- Major overhaul based on full product line UI code audit
-
-## [1.0.0] — 2026-05-30
-
-### Added
-- Initial design language specification
-- Core design philosophy: "Every element must have a reason to exist"
-- Basic visual specs: color, typography, radius, spacing, shadows
-- Basic interaction specs: animation timing, easing curves
-- Growth-first principle, on-demand visibility principle
-- Basic component specs: buttons, inputs, cards, menus
+- `tokens.json`：机器可读 Token 与产品适配元数据。
+- `tokens.css`：可直接消费的语义 Token、Route / Yuich 适配器。
+- `INTEGRATION.md`：接入边界、映射、迁移顺序与验收清单。
+- `index.html`：V1.0 可视化规范与交互演示。
+- `components.css`：Button、Field、Card、Alert、Disclosure、Dialog、Toast、Skeleton 等原生 MVP 组件。
+- `examples/starter.html`：Light/Dark、响应式、键盘与语义状态示例。
+- `scripts/build-tokens.mjs` / `scripts/validate.mjs`：跨平台构建和 Token、版本、引用、对比度、Skill 结构校验。
+- `agents/openai.yaml` / `references/`：可发现的 Skill 元数据与按需工作流参考。

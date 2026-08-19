@@ -1,0 +1,250 @@
+/* Simcise V1.0 · native HTML/CSS MVP components
+ * Requires tokens.css. Component markup uses the sim- prefix.
+ */
+
+.sim-root {
+  min-height: 100%;
+  margin: 0;
+  background: var(--sim-sys-bg-canvas);
+  color: var(--sim-sys-text-primary);
+  font-family: var(--sim-sys-font-ui);
+  font-size: var(--sim-sys-font-size-base);
+  line-height: var(--sim-sys-line-height);
+  -webkit-font-smoothing: antialiased;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sim-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sim-sys-space-4);
+}
+
+.sim-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sim-sys-space-2);
+}
+
+.sim-button {
+  min-height: var(--sim-sys-target-compact);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sim-sys-space-2);
+  padding: var(--sim-sys-space-2) var(--sim-sys-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--sim-sys-radius-action);
+  background: transparent;
+  color: var(--sim-sys-text-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    border-color var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    color var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    transform var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    box-shadow var(--sim-sys-duration-micro) var(--sim-sys-ease-standard);
+}
+
+.sim-button:hover:not(:disabled, [aria-disabled="true"]) { transform: translateY(-1px); }
+.sim-button:active:not(:disabled, [aria-disabled="true"]) { transform: scale(.97); }
+.sim-button:focus-visible { outline: 2px solid var(--sim-sys-accent); outline-offset: 2px; }
+.sim-button:disabled,
+.sim-button[aria-disabled="true"] { opacity: .45; cursor: not-allowed; transform: none; }
+.sim-button[aria-busy="true"] { cursor: progress; }
+
+.sim-button--primary {
+  background: var(--sim-comp-button-primary-bg);
+  border-color: var(--sim-sys-accent);
+  color: var(--sim-comp-button-primary-text);
+}
+.sim-button--primary:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--sim-comp-button-primary-bg-hover);
+  box-shadow: var(--sim-sys-shadow-air);
+}
+
+.sim-button--secondary {
+  background: var(--sim-sys-bg-surface);
+  border-color: var(--sim-sys-border-strong);
+}
+.sim-button--secondary:hover:not(:disabled, [aria-disabled="true"]),
+.sim-button--ghost:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--sim-sys-bg-muted);
+}
+
+.sim-button--danger {
+  background: var(--sim-sys-danger);
+  border-color: var(--sim-sys-danger);
+  color: var(--sim-sys-on-danger);
+}
+.sim-button--danger:hover:not(:disabled, [aria-disabled="true"]) { filter: brightness(.9); }
+
+.sim-icon-button { width: var(--sim-sys-target-compact); padding: 0; }
+
+.sim-field { display: grid; gap: var(--sim-sys-space-1); }
+.sim-label { color: var(--sim-sys-text-primary); font-weight: 600; }
+.sim-hint { color: var(--sim-sys-text-secondary); font-size: var(--sim-sys-font-size-sm); }
+.sim-error { color: var(--sim-sys-danger); font-size: var(--sim-sys-font-size-sm); }
+
+.sim-input,
+.sim-select,
+.sim-textarea {
+  width: 100%;
+  min-height: var(--sim-sys-target-compact);
+  padding: var(--sim-sys-space-2) var(--sim-sys-space-3);
+  border: 1px solid var(--sim-comp-input-border);
+  border-radius: var(--sim-sys-radius-control);
+  background: var(--sim-comp-input-bg);
+  color: var(--sim-sys-text-primary);
+  font: inherit;
+  transition:
+    border-color var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    box-shadow var(--sim-sys-duration-micro) var(--sim-sys-ease-standard);
+}
+.sim-input:hover,
+.sim-select:hover,
+.sim-textarea:hover { border-color: var(--sim-comp-input-border-hover); }
+.sim-input:focus,
+.sim-select:focus,
+.sim-textarea:focus {
+  border-color: var(--sim-comp-input-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sim-sys-accent) 15%, transparent);
+  outline: none;
+}
+.sim-input[aria-invalid="true"],
+.sim-select[aria-invalid="true"],
+.sim-textarea[aria-invalid="true"] { border-color: var(--sim-sys-danger); }
+.sim-input:disabled,
+.sim-select:disabled,
+.sim-textarea:disabled { background: var(--sim-sys-bg-muted); opacity: .6; cursor: not-allowed; }
+
+.sim-card {
+  padding: var(--sim-sys-space-6);
+  border: 1px solid var(--sim-comp-card-border);
+  border-radius: var(--sim-sys-radius-container);
+  background: var(--sim-comp-card-bg);
+  box-shadow: var(--sim-comp-card-shadow);
+}
+.sim-card--action {
+  transition:
+    border-color var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    box-shadow var(--sim-sys-duration-micro) var(--sim-sys-ease-standard),
+    transform var(--sim-sys-duration-micro) var(--sim-sys-ease-standard);
+}
+.sim-card--action:hover { border-color: var(--sim-sys-accent); box-shadow: var(--sim-comp-card-shadow-hover); transform: translateY(-2px); }
+.sim-card--selected { border-color: var(--sim-sys-accent); background: var(--sim-sys-accent-soft); }
+
+.sim-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--sim-sys-space-6);
+  padding: 0 var(--sim-sys-space-2);
+  border: 1px solid var(--sim-sys-border-default);
+  border-radius: var(--sim-sys-radius-control);
+  background: var(--sim-sys-bg-muted);
+  color: var(--sim-sys-text-secondary);
+  font-size: var(--sim-sys-font-size-sm);
+  font-weight: 600;
+}
+
+.sim-alert {
+  padding: var(--sim-sys-space-3) var(--sim-sys-space-4);
+  border: 1px solid currentColor;
+  border-radius: var(--sim-sys-radius-control);
+  background: var(--sim-sys-bg-surface);
+}
+.sim-alert--info { color: var(--sim-sys-info); background: color-mix(in srgb, var(--sim-sys-info) 10%, var(--sim-sys-bg-surface)); }
+.sim-alert--success { color: var(--sim-sys-success); background: color-mix(in srgb, var(--sim-sys-success) 10%, var(--sim-sys-bg-surface)); }
+.sim-alert--warning { color: var(--sim-sys-warning); background: color-mix(in srgb, var(--sim-sys-warning) 10%, var(--sim-sys-bg-surface)); }
+.sim-alert--danger { color: var(--sim-sys-danger); background: color-mix(in srgb, var(--sim-sys-danger) 10%, var(--sim-sys-bg-surface)); }
+
+.sim-disclosure {
+  border: 1px solid var(--sim-sys-border-default);
+  border-radius: var(--sim-sys-radius-container);
+  background: var(--sim-sys-bg-surface);
+  overflow: clip;
+}
+.sim-disclosure > summary {
+  min-height: var(--sim-sys-target-compact);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sim-sys-space-3);
+  padding: var(--sim-sys-space-3) var(--sim-sys-space-4);
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+.sim-disclosure > summary:focus-visible { outline: 2px solid var(--sim-sys-accent); outline-offset: -2px; }
+.sim-disclosure__content { padding: 0 var(--sim-sys-space-4) var(--sim-sys-space-4); color: var(--sim-sys-text-secondary); }
+
+.sim-dialog {
+  width: min(100% - (2 * var(--sim-sys-space-4)), 32rem);
+  max-height: calc(100dvh - (2 * var(--sim-sys-space-6)));
+  padding: var(--sim-sys-space-6);
+  border: 1px solid var(--sim-sys-border-default);
+  border-radius: var(--sim-sys-radius-container);
+  background: var(--sim-sys-bg-surface);
+  color: var(--sim-sys-text-primary);
+  box-shadow: var(--sim-sys-shadow-lift);
+}
+.sim-dialog::backdrop {
+  background: color-mix(in srgb, var(--sim-sys-text-primary) 45%, transparent);
+}
+.sim-dialog:not([open]) { display: none; }
+
+.sim-toast {
+  max-width: 360px;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sim-sys-space-3);
+  padding: var(--sim-sys-space-3) var(--sim-sys-space-4);
+  border: 1px solid var(--sim-sys-border-default);
+  border-left: 3px solid var(--sim-sys-info);
+  border-radius: var(--sim-sys-radius-control);
+  background: var(--sim-sys-bg-surface);
+  box-shadow: var(--sim-sys-shadow-lift);
+}
+
+.sim-skeleton {
+  min-height: var(--sim-sys-space-3);
+  border-radius: var(--sim-sys-radius-control);
+  background: linear-gradient(90deg, var(--sim-sys-bg-muted), var(--sim-sys-bg-surface), var(--sim-sys-bg-muted));
+  background-size: 200% 100%;
+  animation: sim-skeleton 2s var(--sim-sys-ease-standard) infinite;
+}
+@keyframes sim-skeleton { to { background-position: -200% 0; } }
+
+@media (pointer: coarse) {
+  .sim-button,
+  .sim-icon-button,
+  .sim-input,
+  .sim-select,
+  .sim-disclosure > summary,
+  .sim-dialog .sim-button { min-height: var(--sim-sys-target-touch); }
+  .sim-icon-button { width: var(--sim-sys-target-touch); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sim-skeleton { animation: none; }
+  .sim-button,
+  .sim-card--action,
+  .sim-input,
+  .sim-select,
+  .sim-textarea { transform: none !important; }
+}
